@@ -1,0 +1,91 @@
+﻿@model AdliteModelBase
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="~/Images/imgs/favicon.png">
+  <title>Adlite | Portal</title>
+
+  <link href="~/Content/css/font-awesome.min.css" rel="stylesheet">
+  <link href="~/Content/css/simple-line-icons.css" rel="stylesheet">
+  <link href="~/Content/css/glyphicons.css" rel="stylesheet">
+  <link href="~/Content/css/glyphicons-filetypes.css" rel="stylesheet">
+  <link href="~/Content/css/glyphicons-social.css" rel="stylesheet">
+  <link href="~/Content/css/style.css" rel="stylesheet">
+  <link href="~/Content/Overrides.css" rel="stylesheet" />
+  <link href="~/Content/Blank.css" rel="stylesheet">
+
+
+
+  <script src="~/Scripts/template/libs/jquery.min.js"></script>
+  <script src="~/Scripts/_Base/System.js"></script>
+  <script src="~/Scripts/managers/MenuActions.js"></script>
+
+  <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+  <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
+  <script src="../signalr/hubs"></script>
+  <script src="~/Scripts/_Base/Signal.js"></script>
+
+  <script>
+    var _system = null;
+    var _signal = null;
+
+    var _transactions = @AdliteContext.Current.AdliteCache.Transactions;
+    var _clicks = @AdliteContext.Current.AdliteCache.Clicks;
+
+    $(document).ready(function () {
+      _system = new System(
+        '@AdliteContext.Current.Session.Guid.ToString()',
+         @Html.Raw(AdliteContext.Current.Customer != null ? AdliteContext.Current.Customer.ID.ToString() : "null"),
+         @Html.Raw(AdliteContext.Current.Customer != null ? AdliteContext.Current.Customer.CustomerData.Affiliate.ID.ToString() : "null"));
+      _signal = new Signal();
+      _signal.add('portal');
+      _signal.add('click');
+      _signal.add('notifications');
+    });
+  </script>
+
+</head>
+
+<body class="app header-fixed aside-menu-fixed aside-menu-hidden">
+
+  @Html.Partial("~/Views/_Shared/Elements/Header.cshtml", Model)
+  @Html.Partial("~/Views/_Shared/Elements/Modals.cshtml")
+
+  <div class="app-body">
+
+    @Html.Partial("~/Views/_Shared/Elements/Menu.cshtml", Model)
+    <main class="main">
+      @RenderBody()
+    </main>
+    @Html.Partial("~/Views/_Shared/Elements/Aside.cshtml", Model)
+
+  </div>
+  <footer class="app-footer">
+    <a>Adeliate</a> © 2017.
+    <span class="float-right">
+      Powered by <a>Media Monkeys</a>
+    </span>
+  </footer>
+
+  <script src="~/Scripts/template/libs/tether.min.js"></script>
+  <script src="~/Scripts/template/libs/bootstrap.min.js"></script>
+  <script src="~/Scripts/template/libs/pace.min.js"></script>
+  <script src="~/Scripts/template/libs/Chart.min.js"></script>
+  <script src="~/Scripts/template/app.js"></script>
+  <script src="~/Scripts/template/libs/toastr.min.js"></script>
+  <script src="~/Scripts/template/libs/gauge.min.js"></script>
+  <script src="~/Scripts/template/libs/moment.min.js"></script>
+  <script src="~/Scripts/template/libs/daterangepicker.js"></script>
+  <script src="~/Scripts/template/libs/spin.min.js"></script>
+  <script src="~/Scripts/template/libs/ladda.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+    });
+  </script>
+
+</body>
+</html>

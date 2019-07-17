@@ -1,0 +1,50 @@
+﻿@model Adeliate.Portal.Models.Administration.EditCampaignGroupModel 
+
+<div class="list-group sub-group">
+  @foreach (var item in Model.CampaignGroups)
+  {
+    <div class="list-group-item sub-group_item " groupid="@item.ID">
+      <div class="front_subgroup"></div>
+      @item.Name
+      <div class="campaignGroupInfo">
+        <div class="campaignCount">
+          <span>Campaigns: @Model.GetCampaingCount(item) </span>
+        </div>
+        <div class="campaignGroupInfo_img">
+          <img src="~/Images/loading.gif" alt="Alternate Text" style="display:none;" />
+        </div>
+
+      </div>
+    </div>
+    <div class="groupAppend" id="subGroupAppend_@item.ID" dataLoaded="false"></div>
+  }
+</div>
+
+<div class="list-group campaign">
+  @foreach (var item in Model.Campaigns)
+  {
+    bool isActive = Model.IsOfferActive(item,Model.AffiliateID);
+    string _checked = isActive == true ? "checked" : "";
+    <div class="list-group-item sub_item campaign_item" campaignGroupID="@item.ID">
+      <div class="front_campaign"></div>
+      <div class="flag">
+        <img src="~/Images/_FlagsX/@(item.Country.TwoLetterIsoCode).png" class="country_img" alt="Alternate Text" />
+      </div>      
+      <span class="campaign_text">@item.Name</span>
+      <div class="campaign_info">
+        <div class="cap">CapValue: @item.CapValue</div>
+        <div class="price">Price: @item.Price.Value @item.Price.Currency.Abbreviation</div>
+      </div>
+      <div class="offerOptions" style="">
+        <label class="switch switch-3d switch-warning" style="top:5px; right:10px;">
+          <input type="checkbox" class="switch-input isActive" @_checked value="@item.ID">
+          <span class="switch-label"></span>
+          <span class="switch-handle"></span>
+        </label>
+        <button type="button" class="btn btn-success edit_offer">Edit Offer</button>
+        <button type="button" class="btn btn-success edit_campaign_btn">Edit Campaign</button>
+      </div>
+      
+   </div>
+  }
+</div>

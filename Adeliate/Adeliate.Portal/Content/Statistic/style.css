@@ -1,0 +1,43 @@
+﻿._filter {
+  margin-top: 24px;
+  background: white;
+  padding: 30px;
+  border-radius: 6px;
+  margin-left: 15px;
+  width: 98%;
+}
+
+#datatable_wrapper {
+  width: 100%;
+}
+
+#datatable {
+  width: 100%;
+  background: white;
+  border-radius: 5px;
+}
+  table.table thead .sorting:before{
+    left:initial !important;
+  }
+  table.table thead .sorting_asc:before{
+    padding-right:0px !important;
+  }
+  table.table thead .sorting_desc:before{
+    padding-right:0px !important;
+  }
+  #datatable_wrapper{
+    margin-top:10px;
+  }
+  #dateFrom,#dateTo{
+    background:#eee !important;
+  }
+  
+@media (max-width: 500px)  {
+  #datatable_wrapper{
+    padding-right:5px;
+  }
+  .container-fluid{
+    /*padding: 0 !important;*/
+    /*padding-right: 21px !important;*/
+  }
+}

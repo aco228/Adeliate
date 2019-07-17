@@ -1,0 +1,12 @@
+﻿.transactionMessage{ height:50px; padding:10px; }
+.transactionMessageBox{ height: 50px!important; overflow:hidden;}
+
+
+.offersMessage { height:56px; padding:10px; }
+.offerMessageBox{ height:50px; padding:10px; }
+
+@media (max-width:500px){
+  .container-fluid{
+    padding:9px !important;
+  }
+}

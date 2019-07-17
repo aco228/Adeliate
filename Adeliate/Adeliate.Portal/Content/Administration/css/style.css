@@ -1,0 +1,143 @@
+﻿.sub-group{
+  margin-left:100px !important;
+  margin-top:16px;
+  margin-bottom:16px;
+
+}
+.list-group-item{
+  cursor: pointer;
+}
+
+ 
+.sub-group:hover{
+
+}
+.campaign {
+  margin-left:100px !important;
+  margin-bottom:16px;
+
+}
+.campaign_item{
+  background: #b6eaff !important;
+  color:#434343;
+  border-bottom:1px solid white;
+  margin-top: 3px;
+  height:55px;
+  border-radius:5px !important;
+  padding-left:25px;
+  border: 1px solid #81dbff;
+  
+}
+ .sub-item{
+  background:#4dbd74 !important;
+  color:white;
+}
+ .offerOptions{
+ position:absolute; 
+ right:20px; 
+ top:10px;
+}
+ .country_img{
+  height: auto;
+  width: 100%;
+ // padding-right:25px;
+ }
+
+ .sub-group_item{
+  background:#ddffee !important;
+  color:#434343;
+  margin-bottom:3px;
+  border-radius:5px;
+  height:55px;
+  border: 1px solid #a2f2ca;
+  border-bottom-left-radius:5px !important;
+  border-top-left-radius: 5px !important;
+  padding-left:25px;
+ }
+
+ .campaignGroup{
+   border-radius:5px;
+   height:55px;
+   margin-bottom:4px;
+   background:#feffef;
+   color: #434343;
+   border: 1px solid #dfe2b5;
+   padding-left:25px;
+ }
+ .front{
+   width: 11px;
+   height: 100%;
+   background: #f7fb92;
+   position: absolute;
+   left: 0;
+   border-right:1px solid #dfe2b5;
+   border-bottom-left-radius:5px;
+   border-top-left-radius:5px;
+ }
+ .front_subgroup{
+   width: 11px;
+   height: 100%;
+   background: #4ed28f;
+   position: absolute;
+   left: 0;
+   border-right:1px solid #a2f2ca;
+   border-bottom-left-radius:5px;
+   border-top-left-radius:5px;
+ }
+ .front_campaign{
+   width: 11px;
+   height: 100%;
+   background: #26abe2;
+   position: absolute;
+   left: 0;
+   border-bottom-left-radius:5px;
+   border-top-left-radius:5px;
+   
+ }
+ .flag{
+   width:48px;
+   height:25px;
+ }
+ .campaign_text{
+   padding-left:10px;
+ }
+ .edit_campaign_btn{
+  background: #E0F7FA;
+  color: #434343;
+  border-color: #80DEEA;
+  cursor: pointer;
+ }
+ .edit_offer{
+   cursor:pointer;
+ }
+ .edit_campaign_btn:hover{
+   background:#26C6DA;
+   border-color:#26C6DA;
+ }
+ .campaign_info{
+   position: absolute;
+   padding-left: 45px;
+   padding-right: 45px;
+   left: 400px;
+   border-right: 1px solid #81dbff;
+   border-left: 1px solid #81dbff;
+}
+.campaignGroupInfo {
+  position: absolute;
+  right: 3px;
+  top:14px;
+  width: 132px;
+}
+
+.campaignGroupInfo img{
+  width: 100%;
+  height: 100%;
+}
+
+.campaignGroupInfo_img{
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 0;
+  right: 162px;
+}

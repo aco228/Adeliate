@@ -1,0 +1,76 @@
+﻿@model Adeliate.Portal.Models.Offers.OfferLoadModel
+
+@foreach (Adeliate.Portal.Code.Lite.OfferLoadLite offer in Model.Offers)
+{
+  
+  <div class="col-md-3 col-lg-2 offer __offersLoadOffer" offerID="@offer.OfferID">
+    <div class="offer-img">
+      @{ var _badge = offer.CampaignContentType == "2" ? "display:block;" : "display:none;";}
+      <div class="badge18" style="@_badge">
+        <img src="~/Images/icons/18.png" alt="Alternate Text" style="width:100%; height:100%;" />
+      </div>
+      <img src="/Images/Campaign?id=@offer.CampaignID" class="img-responsive" alt="Alternate Text" />
+    </div>
+    <div>
+      <div class="offer-title">
+        <img src="@string.Format("/Images/_FlagsX/{0}.png", offer.CountryCode.ToLower())" alt="Alternate Text" />
+        <span>@offer.Name</span>
+        <hr />
+      </div>
+      <div class="offer-info">
+        <div class="offer-devices float-left">
+          <strong>Devices:</strong> <br />
+          @foreach (string device in offer.CampaignDevices)
+          {
+            <img src="~/Images/icons/@string.Format("{0}.png",device)" data-toggle="tooltip" data-placement="bottom" title="@device" alt="Alternate Text" />
+          }
+        </div>
+        <div class="offer-price float-right">
+          <strong>Price:</strong> <br />
+          <div style="margin-top:7px;">
+            <span>@offer.Price</span>
+          </div>
+        </div>
+      </div>
+      <div class="offer-info">
+        <div class="offer-flows float-left">
+          <strong>Flows:</strong> <br />
+          <div style="margin-top:5px;">
+            @foreach (var item in offer.CampaignFlows)
+            {
+              <span>@item</span>
+            }
+          </div>
+        </div>
+        <div class="offer-operators float-right">
+          <strong class="float-right">Carriers:</strong> <br />
+          <div style="margin-top:5px;">
+            @foreach (var item in offer.MobileOperators)
+            {
+              <span>@item</span>
+            }
+          </div>
+        </div>
+      </div>
+      <div class="offer-more float-left">
+        <hr />
+        <div style="margin-left:auto; margin-right:auto; width:87px;">
+          <input type="button" class="btn btn-success btnMore" name="name" value="More" style="cursor:pointer;" />
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+}
+
+<script>
+  $(document).ready(function () {
+
+    $('img[data-toggle="tooltip"]').tooltip({
+      animated: 'fade',
+      placement: 'bottom'
+    });
+
+  });
+</script>

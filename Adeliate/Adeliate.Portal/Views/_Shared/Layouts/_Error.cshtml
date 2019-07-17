@@ -1,0 +1,38 @@
+﻿@model Adeliate.Portal.Models.ErrorModelBase
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>@Model.Title</title>
+  <!-- Icons -->
+  <link href="~/Content/css/font-awesome.min.css" rel="stylesheet">
+  <link href="~/Content/css/simple-line-icons.css" rel="stylesheet">
+  <link href="~/Content/css/style.css" rel="stylesheet">
+
+  <script src="~/Scripts/template/libs/jquery.min.js"></script>
+  <script src="~/Scripts/_Base/System.js"></script>
+  <script>
+    var _system = null;
+    $(document).ready(function () {
+      _system = new System(
+        '@AdliteContext.Current.Session.Guid.ToString()',
+         @Html.Raw(AdliteContext.Current.Customer != null ? AdliteContext.Current.Customer.ID.ToString() : "null"),
+         @Html.Raw(AdliteContext.Current.Customer != null ? AdliteContext.Current.Customer.CustomerData.Affiliate.ID.ToString() : "null"));
+    });
+  </script>
+
+</head>
+<body class="app flex-row align-items-center">
+
+  @Html.Partial("~/Views/_Shared/Elements/Modals.cshtml")
+  @RenderBody()
+
+  <!-- Bootstrap and necessary plugins -->
+  <script src="~/Scripts/template/libs/tether.min.js"></script>
+  <script src="~/Scripts/template/libs/bootstrap.min.js"></script>
+
+</body>
+</html>

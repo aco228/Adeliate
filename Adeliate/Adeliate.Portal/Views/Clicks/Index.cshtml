@@ -1,0 +1,49 @@
+﻿@model Adeliate.Portal.Models.Clicks.ClicksIndexModel
+
+<link href="~/Content/Customs/clicks.main.css" rel="stylesheet" />
+<script src="~/Scripts/managers/ClicksManager.js"></script>
+<script src="~/Scripts/template/libs/select2.min.js"></script>
+
+<script>
+  var _clicksManager = null;
+  $(document).ready(function () { _clicksManager = new ClickManager(); });
+</script>
+
+
+<ol class="breadcrumb mb-0">
+  <li class="breadcrumb-item">Home</li>
+  <li class="breadcrumb-item active">Clicks</li>
+</ol>
+
+<div class="container-fluid">
+  <div class="animated fadeIn">
+
+    @Html.Partial("~/Views/Clicks/_Filter.cshtml", Model)
+
+    <div id="clickDataHolder">
+      <div id="clickData">
+        <table id="clickDataTable">
+          <thead>
+            <tr class="trClick" id="trHeader">
+              <td class="tdCountry">C</td>
+              <td class="tdClickID">ClickID</td>
+              <td class="tdSubID">SubID</td>
+              <td class="tdOfferName">Offer</td>
+              <td class="tdOfferName">MobileOperator</td>
+              <td class="tdIP">IPAddress</td>
+              <td class="tdPlatform">Platform</td>
+              <td class="tdBrowser">Browser</td>
+              <td class="tdTransaction">Revenue</td>
+              <td class="tdTransaction">Transaction</td>
+              <td class="tdVisit">Visit</td>
+            </tr>
+          </thead>
+          <tbody id="clickDataTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@model Adeliate.Portal.Models.Dashboard.DashboardModel
+
+<div class="card-group">
+  <div class="card">
+    <div class="card-block">
+      <div class="h1 text-muted text-right mb-2">
+        <i class="icon-people"></i>
+      </div>
+      <div class="h4 mb-0 __signal_clicks">@AdliteContext.Current.AdliteCache.Clicks</div>
+      <small class="text-muted text-uppercase font-weight-bold">Clicks</small>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <div class="h1 text-muted text-right mb-2">
+        <i class="icon-user-follow"></i>
+      </div>
+      <div class="h4 mb-0 __signal_transactions">@AdliteContext.Current.AdliteCache.Transactions</div>
+      <small class="text-muted text-uppercase font-weight-bold">Transactions</small>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <div class="h1 text-muted text-right mb-2">
+        <i class="icon-basket-loaded"></i>
+      </div>
+      <div class="h4 mb-0">
+        @AdliteContext.Current.AdliteCache.OfferCount
+      </div>
+      <small class="text-muted text-uppercase font-weight-bold">Avaliable Offers</small>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <div class="h1 text-muted text-right mb-2">
+        <i class="icon-pie-chart"></i>
+      </div>
+      <div class="h4 mb-0 __signal_conversionRate">0%</div>
+      <small class="text-muted text-uppercase font-weight-bold">Conversion rate</small>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-block">
+      <div class="h1 text-muted text-right mb-2">
+        <i class="icon-speedometer"></i>
+      </div>
+      <div class="h4 mb-0">
+        <span class="__signal_revenue">@AdliteContext.Current.AdliteCache.RevenueString</span>
+      </div>
+      <small class="text-muted text-uppercase font-weight-bold">Expected Revenue</small>
+    </div>
+  </div>
+</div>

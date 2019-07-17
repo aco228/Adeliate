@@ -1,0 +1,116 @@
+﻿@model Adeliate.Portal.Models.Administration.UpdateCampaingGroupModel 
+
+@{
+  ViewBag.Title = "EditCampaignGroup";
+  Layout = "~/Views/_Shared/Layouts/_Main.cshtml";
+ }
+<link href="~/Content/Administration/css/style.css" rel="stylesheet" />
+
+
+<ol class="breadcrumb mb-0">
+  <li class="breadcrumb-item">Home</li>
+  <li class="breadcrumb-item">
+    <a href="#">Admin</a>
+  </li>
+  <li class="breadcrumb-item active">Dashboard</li>
+</ol>
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    <div class="row">
+      
+      <!--/.col-->
+
+      <div class="col-sm-6">
+
+        <div class="card">
+          <div class="card-header">
+            <strong>Basic</strong>
+            <div id="CampaingGroupID" campaignGroupID="@Model.CampaignGroup.ID"></div>
+          </div>
+          <div class="card-block">
+            <div class="form-group">
+              <label for="fallbackGroup">Group</label>
+              <select class="form-control" id="fallbackGroup">
+                <option value="0">NULL</option>
+                @foreach (var item in Model.CampaignGroups)
+                {
+                  var _selected = "";
+                  if (Model.CampaignGroup.FallbackGroup != null)
+                  {
+                    _selected = item.ID == Model.CampaignGroup.FallbackGroup.ID ? "selected" : "";
+                  }
+                  <option @_selected value="@item.ID">@item.Name</option>
+                }
+
+              </select>
+            </div>
+          
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter name" value="@Model.CampaignGroup.Name">
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea id="description" name="textarea-input" rows="9" class="form-control" placeholder="Description..">@Model.CampaignGroup.Description</textarea>
+            </div>
+            
+          </div>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary float-right" id="update" style="cursor:pointer;">Update</button>            
+          </div>
+        </div>
+
+      </div>
+      
+      <!--/.col-->
+
+    </div>
+    <!--/.row-->
+
+  </div>
+
+</div>
+
+<script>
+  $(document).ready(function () {
+
+    $('.campaign_group_item').click(function () {
+      var item = $(this);
+      var id = $(this).attr('groupID');
+      var parent = $(this).next();
+      $.ajax({
+        url: "/AdministrationAffiliateAPI/GetCampaignGroupByID",
+        data: { id: id },
+        success: function (response) {
+          parent.html(response);
+          item.addClass("active");
+        }
+      });
+    });
+
+    $('#update').click(function () {
+      var campaignGroupID = $('#CampaingGroupID').attr('campaignGroupID');
+      var name = $('#name').val();
+      var description = $('#description').val();
+      var fallbackGroup = $('#fallbackGroup').val();
+
+      _modal.Primary('Add Campaign Group', 'Are you sure want to add campaign group?', function () {
+        _system.call("/AdminCampaignApi/UpdateCampaignGroup",
+      { CampaignGroupID: campaignGroupID, name: name, description: description, fallbackGroupID: fallbackGroup },
+      function (response) {
+        if (!response.status)
+          _modal.ToastWarning(response.message);
+        else {
+          _modal.Toast(response.message);
+          $('#CampaingGroupID').attr('campaignGroupID', response.data.id);
+        }   
+      });
+      }, 'Update', 'Cancel');
+
+
+    });
+   
+  });
+</script>
+

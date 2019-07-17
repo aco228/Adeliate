@@ -1,0 +1,173 @@
+﻿@model AdliteModelBase
+
+<div class="sidebar">
+  <nav class="sidebar-nav">
+    <ul class="nav">
+      <li class="nav-title">
+        Dashboard
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/"><i class="icon-speedometer"></i> Dashboard</a>
+      </li>
+      @if (MenuManager.CheckAccess(Adeliate.CustomerWeight.Merchant))
+      {
+        <li class="nav-item">
+          <a class="nav-link" href="/Offers"><i class="icon-speedometer"></i> Offers</a>
+        </li>
+      }
+
+      @*
+        --------------------------------------------------------------------------------------
+        STATS MENU
+      
+      *@
+
+
+      <li class="divider"></li>
+      <li class="nav-title">
+        Statistics
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Clicks"><i class="icon-puzzle"></i> Clicks</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Statistics/Index"><i class="icon-puzzle"></i> Stats</a>
+      </li>
+
+      <li class="divider"></li>
+      
+      @if (MenuManager.CheckAccess(Adeliate.CustomerWeight.Administrator))
+      {
+        <li class="nav-title">
+          Administration
+        </li>
+
+        <li class="nav-item nav-dropdown">
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Administration</a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" href="/@AdliteRoute.Administration.AffiliateAll"><i class="icon-puzzle"></i> All affiliates</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/@AdliteRoute.Administration.AffiliateEdit"><i class="icon-puzzle"></i> New affiliate</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/@AdliteRoute.Administration.CustomerAll"><i class="icon-puzzle"></i> All customers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/@AdliteRoute.Administration.CustomerEdit"><i class="icon-puzzle"></i> New customer</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/@AdliteRoute.Administration.CampaignGroupAll"><i class="icon-puzzle"></i> All campaign groups</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/@AdliteRoute.Administration.CampaignGroupEdit"><i class="icon-puzzle"></i> New campaign groups</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/@AdliteRoute.Administration.CampaignEdit"><i class="icon-puzzle"></i> New campaign</a>
+            </li>
+          </ul>
+        </li>
+
+        @*<li class="nav-item nav-dropdown">
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Affiliate</a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" href="/Administration/AllAffiliates"><i class="icon-puzzle"></i> All</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Administration/EditAffiliate"><i class="icon-puzzle"></i> Add new</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item nav-dropdown">
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Customer</a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" href="/Administration/AllCustomers"><i class="icon-puzzle"></i> All</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Administration/EditCustomer"><i class="icon-puzzle"></i> Add new</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item nav-dropdown">
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Campaign groups</a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" href="/Administration/AllCampaignGroups"><i class="icon-puzzle"></i> All</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Administration/EditCampaignGroup"><i class="icon-puzzle"></i> Add new</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item nav-dropdown">
+          <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-puzzle"></i> Campaigns</a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" href="/Administration/AllCampaigns"><i class="icon-puzzle"></i> All</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Administration/EditCampaign"><i class="icon-puzzle"></i> Add new</a>
+            </li>
+          </ul>
+        </li>*@
+      }
+
+
+
+      @*
+        ---------------------------------------------------------------------------------------------
+        QUICK STATS
+      *@
+
+      
+      <li class="divider m-h"></li>
+      
+      <li class="divider"></li>
+      <li class="nav-title">
+        Month stats
+      </li>
+      <li class="nav-item px-1 hidden-cn">
+        <div class="text-uppercase mb-q">
+          <small>
+            <b>Clicks</b>
+          </small>
+        </div>
+        <small class="text-muted text-signal-menu __signal_clicks">@AdliteContext.Current.AdliteCache.Clicks</small>
+      </li>
+      <li class="nav-item px-1 hidden-cn">
+        <div class="text-uppercase mb-q">
+          <small>
+            <b>Transactions</b>
+          </small>
+        </div>
+        <small class="text-muted text-signal-menu">
+          <span class="__signal_transactions">@AdliteContext.Current.AdliteCache.Transactions</span> / <span class="__signal_clicks">@AdliteContext.Current.AdliteCache.Clicks</span>
+        </small>
+      </li>
+      <li class="nav-item px-1 hidden-cn">
+        <div class="text-uppercase mb-q">
+          <small>
+            <b>Expected Revenue</b>
+          </small>
+        </div>
+        <small class="text-muted text-signal-menu">
+          <span class="__signal_revenue">@AdliteContext.Current.AdliteCache.RevenueString</span>
+        </small>
+      </li>
+      <li class="nav-item px-1 hidden-cn">
+        <div class="text-uppercase mb-q">
+          <small>
+            <b>Conversion rate</b>
+          </small>
+        </div>
+        <div class="progress progress-xs">
+          <div class="progress-bar bg-success __signal_conversionRate_bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <small class="text-muted __signal_conversionRate text-signal-menu">23%</small>
+      </li>
+    </ul>
+  </nav>
+</div>

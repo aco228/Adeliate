@@ -1,0 +1,9 @@
+2017-08-09T13:48:05.6222712Z - 26800 - Warn - Exception cleaning temporary files
+2017-08-09T13:48:05.6227714Z - 26800 - Warn - 
+2017-08-09T13:48:05.6227714Z - 26800 - Warn - Could not find a part of the path 'D:\Projects\Adeliate\trunk\Adeliate\Adeliate.Web.Click\App_Data\51Degrees'.
+2017-08-09T13:48:05.6252711Z - 26800 - Warn -    at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   at System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   at System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   at System.IO.DirectoryInfo.GetFiles()
+   at FiftyOne.Foundation.Mobile.Detection.WebProvider.CleanTemporaryFiles()

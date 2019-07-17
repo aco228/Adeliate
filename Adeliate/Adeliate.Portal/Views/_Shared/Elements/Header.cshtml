@@ -1,0 +1,89 @@
+﻿@model AdliteModelBase
+
+<header class="app-header navbar">
+  <button class="navbar-toggler mobile-sidebar-toggler hidden-lg-up" type="button">☰</button>
+  <a class="navbar-brand" href="#"></a>
+  <ul class="nav navbar-nav hidden-md-down">
+    <li class="nav-item">
+      <a class="nav-link navbar-toggler sidebar-toggler" href="#">☰</a>
+    </li>
+    <li class="nav-item px-1">
+      <a class="nav-link" href="/">Home</a>
+    </li>
+    <li class="nav-item px-1">
+      <a class="nav-link" href="/">Campaigns</a>
+    </li>
+    <li class="nav-item px-1">
+      <a class="nav-link" href="/">Settings</a>
+    </li>
+  </ul>
+
+  <ul class="nav navbar-nav ml-auto">
+  
+    <li class="nav-item dropdown hidden-md-down">
+      <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        <i class="icon-envelope-letter" id="internalNotificationOpener"></i>
+        <span class="badge badge-pill badge-info" id="notificationBadge" style="display:none">0</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
+        <div class="dropdown-header text-center">
+          <strong id="notificationExtendText">Please wait..</strong>
+        </div>
+        <div id="internalNotificationHolder">
+
+          @foreach (Adeliate.Portal.Code.Cache.AffiliateNotificationsCache notification in AdliteContext.Current.AdliteCache.Notifications)
+          {
+            <a class="dropdown-item _internalNotification" notificationID="@notification.ID">
+              <div class="message">
+                <div class="py-1 mr-1 float-left">
+                  <div class="avatar">
+                    <img src="/Images/Campaign?id=@notification.CampaignID" class="img-avatar _internalNotificationImage">
+                    <span class="avatar-status badge-success"></span>
+                  </div>
+                </div>
+                <div>
+                  <small class="text-muted"></small>
+                  <small class="text-muted float-right mt-q _internalNotificationDate">
+                    @AdliteDateTime.DatePrint(notification.Created)
+                  </small>
+                </div>
+                <div class="text-truncate font-weight-bold _internalNotificationTitle">
+                  @notification.Title
+                </div>
+                <div class="small text-muted text-truncate _internalNotificationText">
+                  @notification.Text
+                </div>
+              </div>
+            </a>
+          }
+
+        </div>
+        <a class="dropdown-item text-center">
+          <strong id="internalNotificationsLoadMore">Load all</strong>
+        </a>
+      </div>
+    </li>
+    
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        <img src="/Images/Customer" class="img-avatar" alt="admin@bootstrapmaster.com">
+        <span class="hidden-md-down">@Model.Username</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <div class="dropdown-header text-center">
+          <strong>Settings</strong>
+        </div>
+        <a class="dropdown-item" href="#" id="action_reloadCache"> Reload Cache</a>
+        @if (MenuManager.CheckAccess(Adeliate.CustomerWeight.Administrator))
+        {
+          <a class="dropdown-item" href="#" id="action_restartApplication"> Restart application</a>
+        }
+        <a class="dropdown-item" id="logout" href="/login/logout"><i class="fa fa-lock"></i> Logout</a>
+      </div>
+    </li>
+    <li class="nav-item hidden-md-down">
+      <a class="nav-link navbar-toggler aside-menu-toggler" href="#">☰</a>
+    </li>
+
+  </ul>
+</header>

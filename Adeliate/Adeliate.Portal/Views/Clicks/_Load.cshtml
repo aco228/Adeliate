@@ -1,0 +1,22 @@
+﻿@model List<Adeliate.Portal.Controllers.Clicks.Models.ClickDataLite>
+
+@foreach (Adeliate.Portal.Controllers.Clicks.Models.ClickDataLite click in Model)
+{
+
+
+  <tr class="trClick @click.ClassName" ondblclick="_clicksManager.doubleClick(@click.ClickID)">
+    <td class="tdCountry">
+      <img src="@string.Format("/Images/_Flags/{0}.png", click.CountryCode)" />
+    </td>
+    <td class="tdClickID">@click.ClickID</td>
+    <td class="tdSubID">@click.SubID</td>
+    <td class="tdOfferName">@click.Offer</td>
+    <td class="tdOfferName">@click.MobileOperatorName</td>
+    <td class="tdIP">@click.IPAddress</td>
+    <td class="tdPlatform">@click.Platform</td>
+    <td class="tdBrowser">@click.Browser</td>
+    <td class="tdTransaction">@click.RevenueString</td>
+    <td class="tdTransaction">@AdliteDateTime.DatePrint(click.TransactonCreated)</td>
+    <td class="tdVisit">@AdliteDateTime.DatePrint(click.ClickCreated)</td>
+  </tr>
+}

@@ -1,0 +1,104 @@
+﻿@model Adeliate.Portal.Models.Clicks.ClicksIndexModel
+
+<div id="clickFilters" class="row">
+  <div class="col-sm-6 col-md-6">
+    <div class="card">
+      <div class="card-header" id="filterBtnOpener"> Filters </div>
+      <div class="card-block filterOpenerBody_closed" id="filterOpenerBody">
+
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <label for="city">Limit</label>
+            <input type="text" class="form-control" id="_limit" placeholder="Limit" value="50">
+          </div>
+          <div class="form-group col-sm-4">
+            <label for="city">From</label>
+            <input type="text" class="form-control" id="_from" value="@AdliteDateTime.DateTimeToString(DateTime.Now)">
+          </div>
+          <div class="form-group col-sm-4">
+            <label for="postal-code">To</label>
+            <input type="text" class="form-control" id="_to" value="@AdliteDateTime.DateTimeToString(DateTime.Now)">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-sm-4">
+            <label for="city">ClickID</label>
+            <input type="text" class="form-control" id="_clickID" placeholder="ClickID" value="" />
+          </div>
+          <div class="form-group col-sm-4">
+            <label for="city">SubID</label>
+            <input type="text" class="form-control" id="_subID" value="" placeholder="SubID" />
+          </div>
+          <div class="form-group col-sm-4">
+            <label for="postal-code">IPAddress</label>
+            <input type="text" class="form-control" id="_ipAddress" value="" placeholder="IP Address" />
+          </div>
+        </div>
+
+        <fieldset class="form-group">
+          <label>Country</label>
+          <select id="countrySelect" class="form-control select2-multiple" multiple="">
+            @foreach (Adlite.Data.Country country in Model.Countries)
+            {
+              <option value="@country.ID">@country.GlobalName</option>
+            }
+          </select>
+        </fieldset>
+
+        <fieldset class="form-group">
+          <label>Offers</label>
+          <select id="offersSelect" class="form-control select2-multiple" multiple="">
+            @foreach (Adeliate.Portal.Code.Cache.AffiliateOfferCache offer in AdliteContext.Current.AdliteCache.Offers)
+            {
+              var _selected = "";
+              if (Model.OfferID != 0)
+              {
+                _selected = offer.OfferID == Model.OfferID ? "selected" : "";
+              }
+              <option @_selected value="@offer.OfferID">@offer.Name</option>
+            }
+          </select>
+        </fieldset>
+        
+        <div class="row">
+          <div class="form-group col-sm-6">
+            <fieldset class="form-group">
+              <label>Platform</label>
+              <select id="platformSelect" class="form-control select2-multiple" multiple="">
+                @foreach (Adlite.Data.DynamicPlatform platform in Model.Platforms)
+                {
+                  <option value="@platform.ID">@platform.Name</option>
+                }
+              </select>
+            </fieldset>
+          </div>
+          <div class="form-group col-sm-6">
+            <fieldset class="form-group">
+              <label>Browser</label>
+              <select id="browsersSelect" class="form-control select2-multiple" multiple="">
+                @foreach (Adlite.Data.DynamicBrowser browser in Model.Browsers)
+                {
+                  <option value="@browser.ID">@browser.Name</option>
+                }
+              </select>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-md-3 form-control-label">Transaction filter</label>
+          <div class="col-md-9">
+            <label class="checkbox-inline" for="inline-checkbox1">
+              <input type="checkbox" id="_onlyWithTransactions" name="inline-checkbox1" value="option1">Only with transactions
+            </label>
+          </div>
+        </div>
+
+      </div>
+      <div class="card-footer">
+        <button id="loadBtn" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Load</button>
+      </div>
+    </div>
+  </div>
+</div>

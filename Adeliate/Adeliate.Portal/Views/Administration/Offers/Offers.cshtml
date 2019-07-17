@@ -1,0 +1,213 @@
+﻿@model Adeliate.Portal.Models.Administration.AffiliateOfferModel
+
+@{
+  ViewBag.Title = "Offer";
+  Layout = "~/Views/_Shared/Layouts/_Main.cshtml";
+}
+<link href="~/Content/Administration/css/style.css" rel="stylesheet" />
+<ol class="breadcrumb mb-0">
+  <li class="breadcrumb-item">Home</li>
+  <li class="breadcrumb-item">
+    <a href="#">Admin</a>
+  </li>
+  <li class="breadcrumb-item active">Dashboard</li>
+</ol>
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div id="affiliateID" affiliateID="@Model.Affiliate.ID"></div>
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <strong></strong>
+
+          </div>
+          <div class="card-block">
+            <div class="list-group">
+              @foreach (var item in Model.CampaignGroups)
+              {
+                <div class="list-group-item group campaignGroup" groupID="@item.ID">
+                  <div class="front"></div>
+                  @item.Name
+                  <div class="campaignGroupInfo">
+                    <div class="campaignCount">
+                      <span>Campaigns: @Model.GetCampaingCount(item)</span>
+                    </div>
+                    <div class="campaignGroupInfo_img">
+                      <img src="~/Images/loading.gif" alt="Alternate Text" style="display:none;" />
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="groupAppend" id="groupAppend_@item.ID" dataLoaded="false"></div>
+
+              }
+            </div>
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-primary float-right" id="updateCheckbox">Update</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+
+  <script>
+    $(document).ready(function () {
+
+  var affiliateID = $('#affiliateID').attr('affiliateID');
+  var loadedCampaigns = "";
+
+  $('#updateCheckbox').click(function () {
+    var sList = "";
+    $('.isActive').each(function () {
+      if ($(this).is(':checked') == true) {
+        if (sList == "")
+          sList += $(this).attr('value');
+        else
+          sList += "," + $(this).attr('value');
+      }
+
+    });
+    console.log(sList);
+
+    _system.call(
+      '/AdminCampaignApi/UpdateActive', { Boxes: sList, AffiliateID: affiliateID, loadedCampaigns: loadedCampaigns },
+      function (response) {
+        _modal.Toast(response.message);
+      }
+      );
+  });
+  $('body').on('click', '.update_modal_offer', function () {
+    var par = $(this).closest('.modal-footer');
+
+    var campaignID = par.find('#campaignID').attr('campaignid');
+    var parent = par.closest('.modal-content');
+    var priceValue = parent.find('#offer_price').val();
+    var currency = parent.find('#currency').val();
+    var capValue = parent.find('#capValue').val();
+
+    _system.call("/AdminCampaignApi/UpdateOffer", { CampaignID: campaignID, AffiliateID: affiliateID, PriceValue: priceValue, CurrencyID: currency, CapValue: capValue },
+      function (response) {
+        _modal.Toast(response.message);
+        //alert(response.message);
+      }
+      );
+
+
+  });
+
+  function UpdateLoadedCampaigns() {
+    $('.campaign_item').each(function () {
+      if (loadedCampaigns == "")
+        loadedCampaigns += $(this).attr('campaignGroupID');
+      else
+        loadedCampaigns += "," + $(this).attr('campaignGroupID');
+    });
+  }
+
+  $('body').on('click', '.group', function () {
+    var groupID = $(this).attr('groupID');
+    var parent = $(this);
+    var loader = parent.find('.campaignGroupInfo img');
+    var groupApend = $('#groupAppend_' + groupID);
+    if (groupApend.attr('dataLoaded') == 'true'){
+      groupApend.toggle();
+    }
+    else {
+      loader.css('display', 'block');
+      _system.call(
+        "/AdminCampaignApi/GetCampaignGroupByID",
+        { id: groupID, affiliateID },
+        function (response) {
+          if (!response) {
+            loader.css('display', 'none');
+            groupApend.attr('dataLoaded', 'true');
+            groupApend.attr('display', 'none');
+
+          }
+          else {
+            loader.css('display', 'none');
+            groupApend.html(response);
+            groupApend.attr('dataLoaded', 'true');
+            groupApend.attr('display', 'block');
+            loadedCampaigns = "";
+            UpdateLoadedCampaigns();
+            console.log(loadedCampaigns);
+          }
+
+        }
+    );
+    }
+  });
+  
+  $('body').on('click', '.sub-group_item', function () {
+    var groupID = $(this).attr('groupID');
+    var parent = $(this);
+    var loader = parent.find('.campaignGroupInfo img');
+    var groupApend = $('#subGroupAppend_' + parent.attr('groupID'));
+    if (groupApend.attr('dataLoaded') === 'true'){
+      groupApend.toggle();
+    }
+    else {
+      loader.css('display', 'block');
+      _system.call(
+      "/AdminCampaignApi/GetCampaignGroupByID",
+      { id: groupID, affiliateID },
+      function (response) {
+        if (!response) {
+          loader.css('display', 'none');
+          groupApend.attr('dataLoaded', 'true');
+          groupApend.attr('display', 'none');
+
+        }
+        else {
+          loader.css('display', 'none');
+          groupApend.html(response);
+          groupApend.attr('dataLoaded', 'true');
+          
+          loadedCampaigns = "";
+          UpdateLoadedCampaigns();
+          console.log(loadedCampaigns);
+        }
+
+      }
+      );
+    }
+    
+  });
+  
+  $('body').on('click', '.edit_campaign_btn', function () {
+    var parent = $(this).closest('.campaign_item');
+    var id = parent.attr('campaignGroupID');
+    window.location = "/adminCampaignEdit?id=" + id;
+  });
+  $('body').on('click', '.edit_offer', function () {
+    var parent = $(this).closest('.campaign_item');
+    var campaignID = parent.attr('campaignGroupID');
+    var affiliateID = $('#affiliateID').attr('affiliateID');
+    _system.call('/AdminCampaignApi/EditOfferDialog', { campaignID: campaignID, affiliateID: affiliateID },
+      function (response) {
+
+        var element = $(response);
+        // console.log(element);
+        var id = _system.ID('modal');
+        element.attr('id', id);
+        $('#modalHolder').append(element);
+        $('#' + id).modal('show');
+
+      }
+      );
+  });
+  //$('.edit_campaign_btn').click(function () {
+
+
+  //});
+});
+</script>

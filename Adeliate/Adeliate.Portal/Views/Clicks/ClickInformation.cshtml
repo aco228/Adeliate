@@ -1,0 +1,175 @@
+﻿@model Adeliate.Portal.Models.Clicks.ClickInformationModel
+@{ 
+}
+
+<style>
+  tbody tr:first-child td{
+    border-top:0;
+  }
+  .customCard{
+    background: #4dbd74;
+    color: white;
+    border-top-right-radius: 5px !important;
+    border-top-left-radius: 5px !important;
+    border: 1px solid white;
+  }
+ 
+</style>
+<ol class="breadcrumb mb-0">
+  <li class="breadcrumb-item">Home</li>
+  <li class="breadcrumb-item active">Click informations</li>
+</ol>
+
+<div class="container-fluid">
+  <div class="animated fadeIn">
+
+    <div class="row">
+      <div class="col-sm-6 col-lg-3">
+        <div class="card" style="border: 1px solid #4dbd74;">
+          <div class="card-block">
+            <div class="h4 m-0">
+              @Model.Click.ID
+            </div>
+            <div>
+              SubID: @Model.Click.SubID
+            </div>
+            <small class="text-muted">
+              Time: @AdliteDateTime.DatePrint(Model.Click.Created)
+            </small>
+          </div>
+        </div>
+      </div>
+      @if (!string.IsNullOrEmpty(Model.ClickInformation.Note))
+      {
+        <div class="col-sm-6 col-lg-3">
+          <div class="card card-inverse card-danger">
+            <div class="card-block">
+              <div class="h4 m-0"></div>
+              <div></div>
+              <small class="text-muted">
+                @Model.ClickInformation.Note
+              </small>
+            </div>
+          </div>
+        </div>
+      }
+      @if ( Model.Transactions.Count != 0)
+      {
+        <div class="col-sm-6 col-lg-3">
+          <div class="card card-inverse card-success">
+            <div class="card-block" style="height:108px; border: 1px solid; border-radius: 2px;">
+              <div class="h4 m-0">Transaction</div>
+              <div></div>
+              <small class="text-muted">
+                @AdliteDateTime.DatePrint(Model.Transactions.ElementAt(0).Created)
+              </small>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        <div class="card">
+          <div class="card-header customCard">
+            Location informations
+          </div>
+          <div class="card-block">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>CountryCode</td>
+                  <td>@Model.ClickInformation.CountryCode</td>
+                </tr>
+                <tr>
+                  <td>Region</td>
+                  <td>@Model.ClickInformation.Region</td>
+                </tr>
+                <tr>
+                  <td>City</td>
+                  <td>@Model.ClickInformation.City</td>
+                </tr>
+                <tr>
+                  <td>ISPName</td>
+                  <td>@Model.ClickInformation.ISPName</td>
+                </tr>
+                <tr>
+                  <td>DomainName</td>
+                  <td>@Model.ClickInformation.DomainName</td>
+                </tr>
+                <tr>
+                  <td>MobileBrand</td>
+                  <td>@Model.ClickInformation.MobileBrand</td>
+                </tr>
+                <tr>
+                  <td>UsageType</td>
+                  <td>@Model.ClickInformation.UsageType</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-6">
+        <div class="card">
+          <div class="card-header customCard">
+            Device informations
+          </div>
+          <div class="card-block">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>IsMobile</td>
+                  <td>@Model.ClickInformation.IsMobile</td>
+                </tr>
+                <tr>
+                  <td>ScreenPixelsHeight</td>
+                  <td>@Model.ClickInformation.ScreenPixelsHeight</td>
+                </tr>
+                <tr>
+                  <td>ScreenPixelsWidth</td>
+                  <td>@Model.ClickInformation.ScreenPixelsWidth</td>
+                </tr>
+                <tr>
+                  <td>HardwareVendor</td>
+                  <td>@Model.ClickInformation.HardwareVendor</td>
+                </tr>
+                <tr>
+                  <td>HardwareModel</td>
+                  <td>@Model.ClickInformation.HardwareModel</td>
+                </tr>
+                <tr>
+                  <td>PlatformVendor</td>
+                  <td>@Model.ClickInformation.PlatformVendor</td>
+                </tr>
+                <tr>
+                  <td>PlatformName</td>
+                  <td>@Model.ClickInformation.PlatformName</td>
+                </tr>
+                <tr>
+                  <td>PlatformVersion</td>
+                  <td>@Model.ClickInformation.PlatformVersion</td>
+                </tr>
+                <tr>
+                  <td>BrowserVendor</td>
+                  <td>@Model.ClickInformation.BrowserVendor</td>
+                </tr>
+                <tr>
+                  <td>BrowserName</td>
+                  <td>@Model.ClickInformation.BrowserName</td>
+                </tr>
+                <tr>
+                  <td>BrowserVersion</td>
+                  <td>@Model.ClickInformation.BrowserVersion</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,147 @@
+﻿.image{
+  width:180px;
+  height:180px;
+  border-radius:50%;
+}
+.main-info{
+  padding-top:50px;
+  padding-bottom:50px;
+  padding-left:20px;
+  padding-right:20px;
+  background-color: white;
+  border-top:2px solid #72cb91;
+}
+.offer-name{
+  color:#4dbd74;
+}
+.url-info{
+  color: white;
+  background-color: #72cb91;
+  padding-top: 6px;
+  padding-left: 5px;
+  padding-right:20px;
+  width:90%;
+  
+}
+.url-logo{
+  
+  background: url('/Images/icons/9. Url.png');
+  width: 50px;
+  background-repeat: no-repeat;
+  background-size: inherit;
+  background-color:#4dbd74;
+  background-position-x: 14px;
+  background-position-y: 6px;
+}
+
+.url{
+  min-height: 33px;
+}
+.hr{
+  border: 0;
+  clear: both;
+  display: block;
+  width: 98%;
+  background-color: #CFD8DC;
+  height: 1px;
+  margin-top: 23px;
+}
+.icon{
+  margin-right:10px;
+}
+.features{
+  margin-top:9px;
+}
+.feature-text{
+  color: #4dbd74;
+}
+.progress-bar{
+  background-color: #4dbd74;
+}
+.feature-progress{
+  margin-top:12px;
+}
+.custom-tab{
+  color:white !important;
+  height:44px;
+  background-color: #72cb91;
+  
+}
+.active{
+  color:black !important;
+
+}
+.tab-content{
+  min-height:300px;
+}
+
+.tab-link{
+  border-radius:0px !important;
+  border-top:1px solid #72cb91 !important;
+}
+.edit-link{
+  color:#2a2c36;
+}
+.edit-link:hover{
+  text-decoration:none !important;
+  color:#72cb91;
+}
+.content-type{
+  position:absolute;
+  top: -39px;
+  color: white;
+  padding: 7px;
+  padding-left: 23px;
+  padding-right: 41px;
+  left: 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.adult{
+  background: #f275dc;
+}
+.non-adult{
+  background: #2d77c1;
+}
+.unknown{
+  background:#72cb91;
+}
+
+.adult-border{
+  border-top-color: #f275dc;
+}
+.non-adult-border{
+  border-top-color: #2d77c1;
+}
+
+
+
+@media (max-width: 500px) {
+  .url-info{
+   
+  }
+  .features{
+    margin-bottom:15px;
+  }
+  .image{
+    //margin-left:48px;
+    margin-bottom:20px;
+  }
+  .cap{
+    border-left:0px !important;
+    padding-left:10px !important;
+  }
+  .offers-link{
+    padding-right:0px !important;
+  }
+  .tabs{
+    padding-left:0px;
+  }
+  .url{
+    margin-left:1px;
+  }
+  .container-fluid{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}

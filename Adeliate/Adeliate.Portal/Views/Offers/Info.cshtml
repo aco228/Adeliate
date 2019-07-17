@@ -1,0 +1,236 @@
+﻿@model Adeliate.Portal.Models.Offers.OfferInfoModel
+@{
+  ViewBag.Title = "Info";
+  Layout = "~/Views/_Shared/Layouts/_Main.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css" type="text/css" media="screen" />
+@*<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>*@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox.min.js"></script>
+<style>
+  #lightbox{
+    top:90px !important;
+  }
+</style>
+
+<link href="~/Content/Offer/style.css" rel="stylesheet" />
+<ol class="breadcrumb mb-0">
+  <li class="breadcrumb-item">Home</li>
+  <li class="breadcrumb-item">
+    <a href="#">Admin</a>
+  </li>
+  <li class="breadcrumb-item active">Dashboard</li>
+</ol>
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    <div class="col-md-12" style="margin-top:50px;">
+      @{
+        var _text = "";
+        var _img = "";
+        if (Model.Offer.Campaign.CampaignContentType.ToString() == "Adult")
+        {
+          _text = "Adult";
+          _img = "Adult.png";
+          
+        }
+        else if (Model.Offer.Campaign.CampaignContentType.ToString() == "NonAdult")
+        {
+          _text = "Non-Adult";
+          _img = "Non-Adult.png";
+        }
+        else
+        {
+          _text = "Unknown";
+          _img = "Unknown.png";
+        }
+
+
+      }
+      <div class="main-info row">
+        <div class="content-type" style="background:#72cb91;">
+          <img src="~/Images/icons/@_img" class="img-responsive"  alt="Alternate Text" />
+          <span style="vertical-align:middle;">@_text</span>
+        </div>
+        <div class="col-md-2" style="margin-left:50px;">
+          <div class="image">
+            <img src="/Images/Campaign?id=@Model.Offer.Campaign.ID" style="width:100%; height: 100%; border-radius:50%;" alt="Alternate Text" />
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            <div class="col-md-6">
+              <h3 class="offer-name">@Model.Offer.Campaign.Name</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="padding-bottom:9px;">
+              <div class="row">
+                <div class="col-md-2">
+                  <strong>ID:</strong>
+                  <span>@Model.Offer.ID</span>
+                </div>
+                <div class="col-md-3">
+                  <strong>Price:</strong>
+                  @if (Model.Offer.Price != null)
+                  {
+                    <span>@Model.Offer.Price.Value@Model.Offer.Price.Currency.Symbol</span>
+                  }
+                </div>
+                <div class="col-md-6">
+                  <strong>Country:</strong>
+                  @{ string img = Model.Offer.Campaign.Country.TwoLetterIsoCode + ".png"; }
+                  <img src="~/Images/_FlagsX/@img" class="img-responsive"style="height:13px; width:28px; margin-top:-4px; margin-left:7px;" alt="Alternate Text" />
+                  <span>@Model.Offer.Campaign.Country.GlobalName</span>
+                </div>
+              </div>
+             
+            </div>
+            <div class="col-md-6" style="margin-top:-5px;margin-left:-12px;">
+                <div class="url row" style="background:#72cb91;">
+                  <div class="url-logo">
+                    
+                  </div>
+                  <div class="url-info" style="overflow:hidden;">
+                    <span>
+                      @string.Format("http://click.adeliate.me/{0}?{1}=[YOUR_CLICK_ID]", Model.Offer.Key, Model.Offer.Affiliate.SubidName)
+                    </span>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            <hr class="hr" />
+          </div>
+          <div class="row">
+            <div class="col-md-2">              
+              <strong>Devices:</strong> <br />
+              <div class="features">
+                @foreach (var item in Model.CampaignDeviceMaps)
+                {
+                  string device = item.CampaignDevice + ".png";
+                  <img src="~/Images/icons/@device" data-toggle="tooltip" data-placement="bottom" title="@item.CampaignDevice" class="img-responsive icon" alt="Alternate Text" />
+                }
+              </div>
+            </div>
+            <div class="col-md-3">
+              <strong>Operators</strong> <br />
+              <div class="features">
+                
+                @foreach (var item in Model.CampaignMobileOperatorMaps)
+                {
+                  <span class="feature-text">@item.MobileOperator.Name</span>
+                }
+              </div>
+            </div>
+            <div class="col-md-3">
+              <strong>Flow:</strong> <br />
+              <div class="features">
+                
+                @foreach (var item in Model.CampaignFlowMaps)
+                {
+                  <span class="feature-text">@item.CampaignFlow</span>
+                }
+               
+              </div>
+            </div>
+            <div class="col-md-4 cap" style="border-left: 1px solid #CFD8DC; padding-left: 42px;">
+              <strong>Your daily cap:</strong>
+              <span class="float-right">@Model.CurrentTransactions/@Model.Cap</span>
+              <br />
+              <div class="feature-progress" >
+                <div class="progress">
+                  @{ 
+                    var progress = Model.CurrentTransactions / Model.Cap;
+                  }
+                  <div class="progress-bar" role="progressbar" style="width: @progress%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top:30px;">
+        <div class="col-md-4 offers-link" style="padding-left:0px;">
+          <div class="card">
+            <div class="card-header" style="background-color:#72cb91; color:white;">
+              <strong>Offers</strong>
+            </div>
+            <div class="card-block">
+              <div>
+                <a href="/adminCampaignEdit?id=@Model.Offer.Campaign.ID" class="edit-link">
+                  <img src="~/Images/icons/4. Edit.png" class="img-responsive" alt="Alternate Text" />
+                  <span style="margin-left:7px;">Edit</span>
+                </a>
+                <hr />
+              </div>
+              <div>
+                <a href="/Clicks?id=@Model.Offer.ID" class="edit-link">
+                  <img src="~/Images/icons/5. Click.png" class="img-responsive" alt="Alternate Text" />
+                  <span style="margin-left:7px;">Clicks</span>
+                </a>
+                
+                <hr />
+              </div>
+              <div>
+                <a href="/Statistics/Index?id=@Model.Offer.Campaign.ID" class="edit-link">
+                  <img src="~/Images/icons/6. Statistic.png" class="img-responsive" alt="Alternate Text" />
+                  <span style="margin-left:7px;">Statistics</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" style="background-color:#72cb91; color:white;">
+              <strong>Pictures</strong>
+            </div>
+            <div class="card-block">
+              <div style="margin-left:20px;">
+                @*<img src="/Images/Get?id=@item.Image.ID" style="width:140px; height:145px; margin-bottom: 3px;" alt="Alternate Text" />*@
+                @foreach (var item in Model.CampaingImageMaps)
+                {
+                  
+                  <a href="/Images/Get?id=@item.Image.ID" style="width:140px; height:145px; margin-bottom: 3px;" data-lightbox="image">
+                    <img src="/Images/Get?id=@item.Image.ID" style="width:140px; height:145px; margin-bottom: 3px;" alt="Alternate Text" />
+                  </a>
+                }
+                
+                @*<img src="~/Images/Campaign?id=22" style="width:140px; height:145px; margin-bottom: 3px;" alt="Alternate Text" />
+                <img src="~/Images/Campaign?id=23" style="width:140px; height:145px; margin-bottom: 3px;" alt="Alternate Text" />*@
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-8 tabs" style="padding-right:0px;">
+          <ul class="nav nav-tabs custom-tab" role="tablist" style="border-top-left-radius:5px; border-top-right-radius:5px;">
+            <li class="nav-item">
+              <a class="nav-link custom-tab active tab-link" style="border-top-left-radius:5px !important;" data-toggle="tab" href="#descTab" role="tab" aria-controls="descTab" aria-expanded="true"><span>Description</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link custom-tab tab-link"  data-toggle="tab" href="#ipRangesTab" role="tab" aria-controls="ipRangesTab" aria-expanded="true"><span>IP Ranges</span></a>
+            </li>  
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="descTab" role="tabpanel" aria-expanded="false" style="padding:30px;">
+              @Model.Offer.Campaign.Description
+            </div>
+            <div class="tab-pane" id="ipRangesTab" role="tabpanel" aria-expanded="false" style="padding:30px;">
+              @Model.Offer.Campaign.IPRanges
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+
+    $('img[data-toggle="tooltip"]').tooltip({
+      animated: 'fade',
+      placement: 'bottom'
+    });
+
+  });
+</script>

@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C850B213-B2A0-4FC4-AD9D-42BFA19AAF18}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Adeliate.Data</RootNamespace>
+    <AssemblyName>Adeliate.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\_thirdPartyLibs\log4net-1.2.11\bin\net\4.0\release\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core.Sql\Database.cs" />
+    <Compile Include="Core.Sql\SqlConnectionInfo.cs" />
+    <Compile Include="Core.Sql\SqlManagerBase.cs" />
+    <Compile Include="Data.Sql\AffiliateImageMapManager.cs" />
+    <Compile Include="Data.Sql\AffiliateImageMapManager.model.cs" />
+    <Compile Include="Data.Sql\AffiliateImageMapTable.cs" />
+    <Compile Include="Data.Sql\AffiliateManager.cs" />
+    <Compile Include="Data.Sql\AffiliateManager.model.cs" />
+    <Compile Include="Data.Sql\AffiliateNotificationManager.cs" />
+    <Compile Include="Data.Sql\AffiliateNotificationManager.model.cs" />
+    <Compile Include="Data.Sql\AffiliateNotificationTable.cs" />
+    <Compile Include="Data.Sql\AffiliateTable.cs" />
+    <Compile Include="Data.Sql\AffiliateTypeManager.cs" />
+    <Compile Include="Data.Sql\AffiliateTypeManager.model.cs" />
+    <Compile Include="Data.Sql\AffiliateTypeTable.cs" />
+    <Compile Include="Data.Sql\CampaignDeviceMapManager.cs" />
+    <Compile Include="Data.Sql\CampaignDeviceMapManager.model.cs" />
+    <Compile Include="Data.Sql\CampaignDeviceMapTable.cs" />
+    <Compile Include="Data.Sql\CampaignFlowMapManager.cs" />
+    <Compile Include="Data.Sql\CampaignFlowMapManager.model.cs" />
+    <Compile Include="Data.Sql\CampaignFlowMapTable.cs" />
+    <Compile Include="Data.Sql\CampaignGroupManager.cs" />
+    <Compile Include="Data.Sql\CampaignGroupManager.model.cs" />
+    <Compile Include="Data.Sql\CampaignGroupTable.cs" />
+    <Compile Include="Data.Sql\CampaignImageMapManager.cs" />
+    <Compile Include="Data.Sql\CampaignImageMapManager.model.cs" />
+    <Compile Include="Data.Sql\CampaignImageMapTable.cs" />
+    <Compile Include="Data.Sql\CampaignManager.cs" />
+    <Compile Include="Data.Sql\CampaignManager.model.cs" />
+    <Compile Include="Data.Sql\CampaignMobileOperatorMapManager.cs" />
+    <Compile Include="Data.Sql\CampaignMobileOperatorMapManager.model.cs" />
+    <Compile Include="Data.Sql\CampaignMobileOperatorMapTable.cs" />
+    <Compile Include="Data.Sql\CampaignTable.cs" />
+    <Compile Include="Data.Sql\ClickInformationManager.cs" />
+    <Compile Include="Data.Sql\ClickInformationManager.model.cs" />
+    <Compile Include="Data.Sql\ClickInformationTable.cs" />
+    <Compile Include="Data.Sql\ClickManager.cs" />
+    <Compile Include="Data.Sql\ClickManager.model.cs" />
+    <Compile Include="Data.Sql\ClickTable.cs" />
+    <Compile Include="Data.Sql\CountryManager.cs" />
+    <Compile Include="Data.Sql\CountryManager.model.cs" />
+    <Compile Include="Data.Sql\CountryTable.cs" />
+    <Compile Include="Data.Sql\CurrencyManager.cs" />
+    <Compile Include="Data.Sql\CurrencyManager.model.cs" />
+    <Compile Include="Data.Sql\CurrencyTable.cs" />
+    <Compile Include="Data.Sql\CustomerImageMapManager.cs" />
+    <Compile Include="Data.Sql\CustomerImageMapManager.model.cs" />
+    <Compile Include="Data.Sql\CustomerImageMapTable.cs" />
+    <Compile Include="Data.Sql\CustomerManager.cs" />
+    <Compile Include="Data.Sql\CustomerManager.model.cs" />
+    <Compile Include="Data.Sql\CustomerSessionManager.cs" />
+    <Compile Include="Data.Sql\CustomerSessionManager.model.cs" />
+    <Compile Include="Data.Sql\CustomerSessionTable.cs" />
+    <Compile Include="Data.Sql\CustomerTable.cs" />
+    <Compile Include="Data.Sql\CustomerTypeManager.cs" />
+    <Compile Include="Data.Sql\CustomerTypeManager.model.cs" />
+    <Compile Include="Data.Sql\CustomerTypeTable.cs" />
+    <Compile Include="Data.Sql\DynamicBrowserManager.cs" />
+    <Compile Include="Data.Sql\DynamicBrowserManager.model.cs" />
+    <Compile Include="Data.Sql\DynamicBrowserTable.cs" />
+    <Compile Include="Data.Sql\DynamicPlatformManager.cs" />
+    <Compile Include="Data.Sql\DynamicPlatformManager.model.cs" />
+    <Compile Include="Data.Sql\DynamicPlatformTable.cs" />
+    <Compile Include="Data.Sql\ImageManager.cs" />
+    <Compile Include="Data.Sql\ImageManager.model.cs" />
+    <Compile Include="Data.Sql\ImageTable.cs" />
+    <Compile Include="Data.Sql\LanguageManager.cs" />
+    <Compile Include="Data.Sql\LanguageManager.model.cs" />
+    <Compile Include="Data.Sql\LanguageTable.cs" />
+    <Compile Include="Data.Sql\MobileOperatorCodeManager.cs" />
+    <Compile Include="Data.Sql\MobileOperatorCodeManager.model.cs" />
+    <Compile Include="Data.Sql\MobileOperatorCodeTable.cs" />
+    <Compile Include="Data.Sql\MobileOperatorManager.cs" />
+    <Compile Include="Data.Sql\MobileOperatorManager.model.cs" />
+    <Compile Include="Data.Sql\MobileOperatorTable.cs" />
+    <Compile Include="Data.Sql\OfferCapMapManager.cs" />
+    <Compile Include="Data.Sql\OfferCapMapManager.model.cs" />
+    <Compile Include="Data.Sql\OfferCapMapTable.cs" />
+    <Compile Include="Data.Sql\OfferManager.cs" />
+    <Compile Include="Data.Sql\OfferManager.model.cs" />
+    <Compile Include="Data.Sql\OfferTable.cs" />
+    <Compile Include="Data.Sql\PostbackDataManager.cs" />
+    <Compile Include="Data.Sql\PostbackDataManager.model.cs" />
+    <Compile Include="Data.Sql\PostbackDataTable.cs" />
+    <Compile Include="Data.Sql\PostbackManager.cs" />
+    <Compile Include="Data.Sql\PostbackManager.model.cs" />
+    <Compile Include="Data.Sql\PostbackRequestManager.cs" />
+    <Compile Include="Data.Sql\PostbackRequestManager.model.cs" />
+    <Compile Include="Data.Sql\PostbackRequestTable.cs" />
+    <Compile Include="Data.Sql\PostbackTable.cs" />
+    <Compile Include="Data.Sql\PostbackTypeManager.cs" />
+    <Compile Include="Data.Sql\PostbackTypeManager.model.cs" />
+    <Compile Include="Data.Sql\PostbackTypeTable.cs" />
+    <Compile Include="Data.Sql\PriceManager.cs" />
+    <Compile Include="Data.Sql\PriceManager.model.cs" />
+    <Compile Include="Data.Sql\PriceTable.cs" />
+    <Compile Include="Data.Sql\StatInfoManager.cs" />
+    <Compile Include="Data.Sql\StatInfoManager.model.cs" />
+    <Compile Include="Data.Sql\StatInfoTable.cs" />
+    <Compile Include="Data.Sql\TransactionManager.cs" />
+    <Compile Include="Data.Sql\TransactionManager.model.cs" />
+    <Compile Include="Data.Sql\TransactionTable.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Senti\trunk\Senti.Core\Senti.Core.csproj">
+      <Project>{fc2aa55a-f0ca-423a-8f45-2f21fc6982ce}</Project>
+      <Name>Senti.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Senti\trunk\Senti.Data\Senti.Data.csproj">
+      <Project>{FFA64EB3-3D17-4DC1-8B8F-1E4B884AC7E5}</Project>
+      <Name>Senti.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Adeliate.Core\Adeliate.Core.csproj">
+      <Project>{efd85ddd-2455-4ee7-9200-83f9fc6a41e0}</Project>
+      <Name>Adeliate.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

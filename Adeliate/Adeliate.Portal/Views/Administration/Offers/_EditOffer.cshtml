@@ -1,0 +1,73 @@
+﻿@model Adeliate.Portal.Models.Administration.Input.EditOfferInputModel  
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="offerModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-success">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Offer</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        @{ 
+          var display = Model.OfferExist == false ? "display:block" : "display:none";
+        }
+        <div id="error" style="color:#f86c6b !important; @display">
+          There is no offer for this campaign/affiliate. You can add an offer by clicking "Update". 
+        </div>
+        <div class="col-8" style="margin-left:auto; margin-right:auto; margin-top:46px;">
+          <label style="margin-bottom:0px;">Price (Campaign) : @Model.Campaign.Price.Value @Model.Campaign.Price.Currency.Abbreviation</label>
+          <hr />
+        </div>
+        <div class="col-8"  style="margin-left:auto; margin-right:auto;">
+          <div class="row">
+            <div class="col-4" style="float:left;">
+              <div class="form-group">
+                <label for="offer_price" class="form-control-label">Price:</label>
+                @{ var _price = Model.Offer.Price != null ? Model.Offer.Price.Value.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture) : "0";}
+                <input type="number" step="0.1" min="0" class="form-control" id="offer_price" value="@_price">
+              </div>
+            </div>
+            <div class="col-4" style="float:left;">
+              <div class="form-group">
+                <label for="currency">Currency</label>
+                <select class="form-control" id="currency">
+                  @foreach (var curr in Model.Currencies)
+                {
+                    <option value="@curr.ID">@curr.Abbreviation</option>
+                }
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-8" style="margin-left:auto; margin-right:auto;">
+          <label style="margin-top: 44px; margin-bottom: 0px;">Cap Value (Campaign) : @Model.Campaign.CapValue</label>
+          <hr />
+        </div>
+        <div class="col-4" style="margin-left:131px;">
+          <div class="form-group">
+            <label for="capValue" class="form-control-label">CapValue:</label>
+            @{
+              var _value = Model.Offer.CapValue != null ? Model.Offer.CapValue.Value : 0;
+              if(_value == -1)
+              {
+                _value = 0;
+              }
+             }
+            <input type="number" min="0" class="form-control" id="capValue" value="@_value">
+          </div>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary update_modal_offer">Update</button>
+        <div id="campaignID" campaignID="@Model.CampaignID"></div>
+      </div>
+      
+ 
+  </div>
+   
+</div>

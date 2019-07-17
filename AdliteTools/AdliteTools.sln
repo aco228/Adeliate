@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adeliate.Core", "..\Adeliate\Adeliate.Core\Adeliate.Core.csproj", "{EFD85DDD-2455-4EE7-9200-83F9FC6A41E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adeliate.Data", "..\Adeliate\Adeliate.Data\Adeliate.Data.csproj", "{C850B213-B2A0-4FC4-AD9D-42BFA19AAF18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adlite.Direct.Data", "..\Adeliate\Adlite.Direct.Data\Adlite.Direct.Data.csproj", "{D3BA6D25-04E4-42EF-AFA6-57EDB6D0C0BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Direct.Core", "..\..\..\AkoProjects\dot.net\Direct\Direct.Core\Direct.Core.csproj", "{79BF132C-FE95-4096-8BED-7E981C50E71C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adeliate.Web", "..\Adeliate\Adeliate.Web\Adeliate.Web.csproj", "{84EFC8A8-9940-4679-AD13-80852E857F00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adlite.IPInserter", "Adlite.IPInserter\Adlite.IPInserter.csproj", "{BF807EC3-A803-45E7-81F3-A77D247F6BD8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EFD85DDD-2455-4EE7-9200-83F9FC6A41E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFD85DDD-2455-4EE7-9200-83F9FC6A41E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFD85DDD-2455-4EE7-9200-83F9FC6A41E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFD85DDD-2455-4EE7-9200-83F9FC6A41E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C850B213-B2A0-4FC4-AD9D-42BFA19AAF18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C850B213-B2A0-4FC4-AD9D-42BFA19AAF18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C850B213-B2A0-4FC4-AD9D-42BFA19AAF18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C850B213-B2A0-4FC4-AD9D-42BFA19AAF18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3BA6D25-04E4-42EF-AFA6-57EDB6D0C0BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3BA6D25-04E4-42EF-AFA6-57EDB6D0C0BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3BA6D25-04E4-42EF-AFA6-57EDB6D0C0BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3BA6D25-04E4-42EF-AFA6-57EDB6D0C0BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79BF132C-FE95-4096-8BED-7E981C50E71C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79BF132C-FE95-4096-8BED-7E981C50E71C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79BF132C-FE95-4096-8BED-7E981C50E71C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79BF132C-FE95-4096-8BED-7E981C50E71C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84EFC8A8-9940-4679-AD13-80852E857F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84EFC8A8-9940-4679-AD13-80852E857F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84EFC8A8-9940-4679-AD13-80852E857F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84EFC8A8-9940-4679-AD13-80852E857F00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF807EC3-A803-45E7-81F3-A77D247F6BD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF807EC3-A803-45E7-81F3-A77D247F6BD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF807EC3-A803-45E7-81F3-A77D247F6BD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF807EC3-A803-45E7-81F3-A77D247F6BD8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

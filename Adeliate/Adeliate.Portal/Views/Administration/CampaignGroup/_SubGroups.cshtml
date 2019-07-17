@@ -1,0 +1,17 @@
+﻿@model Adeliate.Portal.Models.Administration.EditCampaignGroupModel 
+
+<div class="list-group sub-group">
+  @foreach (var item in Model.CampaignGroups)
+  {
+    <div class="list-group-item sub-group_item " groupid="@item.ID">
+      <div class="front_subgroup"></div>
+      @item.Name
+      <div class="campaignGroupInfo">
+        <button class="btn btn-success btnEditCampaign" groupID="@item.ID" style="cursor:pointer;">Edit Campaign Group</button>
+      </div>
+    </div>
+    <div class="groupAppend" id="subGroupAppend_@item.ID" dataLoaded="false"></div>
+  }
+</div>
+
+</div>

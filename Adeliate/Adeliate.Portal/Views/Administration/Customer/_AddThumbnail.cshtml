@@ -1,0 +1,95 @@
+﻿@model Adeliate.Portal.Models.Administration.EditCustomerModel
+@{
+  ViewBag.Title = "Customer Thumbnail";
+  Layout = "~/Views/_Shared/Layouts/_Main.cshtml";
+}
+
+<style>
+  .sidebar {
+    display: none;
+  }
+
+  .app-body {
+    margin-top: 0px !important;
+  }
+
+  .pace {
+    display: none !important;
+  }
+
+  header {
+    display: none !important;
+  }
+
+  .image {
+    position: relative;
+    float: left;
+    height: 179px;
+    width: 179px;
+  }
+
+  .default {
+    display: none;
+  }
+
+  .visible {
+    display: block !important;
+  }
+
+  .app-footer {
+    display: none !important;
+  }
+</style>
+<div class="container-fluid" style="padding-left:0px; padding-right:0px;">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <strong>Thumbnail</strong>
+            <div id="campaignID" ></div>
+          </div>
+          <div class="card-block">
+            <img src="/Images/Customer?id=@Model.Customer.ID" alt="Alternate Text" style="width:250px; height:250px;" />
+          </div>
+          <div class="card-footer">
+
+            <form action="/AdminCustomer/AddCustomerThumbnail" method="post" enctype="multipart/form-data">
+              <input type="text" name="ID" value="@Model.Customer.ID" placeholder="ID of object" hidden />
+              <div class="input-group" style="width:500px;">
+                <label class="input-group-btn">
+                  <span class="btn btn-primary" style="cursor:pointer;">
+                    Browse… <input type="file" name="file" style="display: none;">
+                  </span>
+                </label>
+                <input type="text" class="form-control" id="fileName" readonly="" style="height:35px; border-top-right-radius: 4px;border-bottom-right-radius: 4px;">
+                <input id="submit" class="btn btn-success" type="submit" name="name" id="addImage" value="Add Image" style="height:35px; margin-left:40px;" disabled />
+              </div>
+
+            </form>
+           
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  $(document).on('change', ':file', function () {
+    var input = $(this),
+        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [numFiles, label]);
+  });
+
+  $(document).ready(function () {
+    $(':file').on('fileselect', function (event, numFiles, label) {
+      $('#fileName').val(label);
+      $('input:submit').attr('disabled', false);
+    });
+
+  });
+</script>

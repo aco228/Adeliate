@@ -1,0 +1,15 @@
+﻿@model Adeliate.Portal.Models.ErrorModelBase
+@{
+  Layout = "~/Views/_Shared/Layouts/_Error.cshtml";
+ }
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="clearfix">
+        <h1 class="float-left display-3 mr-2">@Model.Code</h1>
+        <h4 class="pt-1">@Model.ErrorTitle</h4>
+        <p class="text-muted">@Model.ErrorDescription</p>
+      </div>
+    </div>
+  </div>
+</div>

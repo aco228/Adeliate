@@ -1,0 +1,279 @@
+﻿@model Adeliate.Portal.Models.Administration.EditAffiliateModel
+
+@{
+  ViewBag.Title = "EditAffiliate";
+  Layout = "~/Views/_Shared/Layouts/_Main.cshtml";
+ }
+<ol class="breadcrumb mb-0">
+  <li class="breadcrumb-item">Home</li>
+  <li class="breadcrumb-item">
+    <a href="#">Admin</a>
+  </li>
+  <li class="breadcrumb-item active">Dashboard</li>
+</ol>
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    <div class="row">
+      
+      <!--/.col-->
+
+      <div class="col-sm-6">
+
+        <div class="card">
+          <div class="card-header">
+            <strong>Affiliate</strong>
+            @{
+              var affiliateID = Model.Affiliate.ID;
+            }
+            <div id="affiliateID" affiliateID="@affiliateID"></div>
+          </div>
+          <div class="card-block">
+            <div class="form-group">
+              <label for="affiliateType">Affiliate type</label>
+              <select class="form-control" id="affiliateType">
+                @foreach (var type in Model.AffiliateTypes)
+                {
+                  var _selected = "";
+                  if (Model.Affiliate.AffiliateType != null)
+                  {
+                    _selected = type.ID == Model.Affiliate.AffiliateType.ID ? "selected" : "";
+                  }
+                <option @_selected value="@type.ID">@type.Name</option>
+
+                }
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter affiliate name" value="@Model.Affiliate.Name">
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea id="description" name="textarea-input" rows="9" class="form-control" placeholder="Description.." value="@Model.Affiliate.Description"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="subIDName">SubID Name</label>
+              <input type="text" class="form-control" id="subIDName" value="@Model.Affiliate.SubidName" placeholder="subIDName">
+            </div>
+
+            <div class="form-group">
+              <label for="contact">Contact *</label>
+              <input type="text" class="form-control" id="contact" value="@Model.Affiliate.Contact" placeholder="Contact">
+            </div>
+
+            <div class="form-group">
+              <label for="webSite">Web Site *</label>
+              <input type="text" class="form-control" id="webSite" value="@Model.Affiliate.WebsiteUrl" placeholder="Web Site">
+            </div>
+            <div class="form-group">
+              <label>Is Active</label>
+              @{ var _checked = Model.Affiliate.IsActive == true ? "checked" : "";}
+              <label class="switch switch-icon switch-pill switch-primary">
+                <input type="checkbox" id="isChecked" class="switch-input" @_checked>
+                <span class="switch-label" data-on="" data-off=""></span>
+                <span class="switch-handle"></span>
+              </label>
+            </div>
+            
+          </div>
+          <div class="card-footer">
+            <button type="button" class="btn btn-primary" id="update"> Update</button>
+            
+          </div>
+        </div>
+
+      </div>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-header">
+            <strong>Postbacks</strong>
+            @{ var _disabled = Model.Affiliate.ID == -1 ? "disabled" : "";}
+            <button type="button" class="btn btn-info active float-right btn-sm" id="addPostback" style="cursor:pointer;" @_disabled>+</button>
+          </div>
+          <div class="card-block" id="postbacks" affiliateID="">
+            @foreach (var item in Model.Postbacks)
+            {
+              <div class="card card-accent-success postback_item" id="@item.ID">
+                <div class="card-header" style="cursor:pointer;">
+                  Postback
+                </div>
+                <div class="card-block">
+                  <div class="form-group">
+                    <label for="postbackType">Postback Type</label>
+                    <select class="form-control" id="postbackType">
+                      @foreach (var type in Model.PostbackTypes)
+                      {
+                        var _selected = "";
+                        if (item.PostbackType != null)
+                        {
+                          _selected = type.ID == item.PostbackType.ID ? "selected" : "";
+                        }
+                        <option @_selected value="@type.ID">@type.Name</option>
+                      }
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="url">URL</label>
+                    <input type="text" class="form-control" name="Url" id="url" value="@item.Url" placeholder="Enter URL">
+                  </div>
+                  <div class="form-group">
+                    <label>IsActive</label>
+                    @{ var _checked1 = item.IsActive == true ? "checked" : "";}
+                    <label class="switch switch-icon switch-success">
+                      <input type="checkbox" class="switch-input" @_checked1 id="postbackIsActive">
+                      <span class="switch-label" data-on="" data-off=""></span>
+                      <span class="switch-handle"></span>
+                    </label>
+                  </div>
+                  <button type="button" class="btn btn-danger float-right deletePostback" style="margin-left:5px !important; cursor: pointer;" >Delete</button>
+                  <button type="button" class="btn btn-primary  float-right update" style="cursor: pointer;">Update</button>
+                </div>
+              </div>
+            }
+            <div class="template" style="display:none;">
+              <div class="card card-accent-primary postback_item" id="-1">
+                <div class="card-header" style="cursor:pointer;">
+                  Postback
+                </div>
+                <div class="card-block">
+                  <div class="form-group">
+                    <label for="postbackType">Postback Type</label>
+                    <select class="form-control" id="postbackType">
+                      @foreach (var type in Model.PostbackTypes)
+                      {
+                        <option value="@type.ID">@type.Name</option>
+                      }
+                    </select>
+                  </div>
+                 
+                  <div class="form-group">
+                    <label for="url">URL</label>
+                    <input type="text" class="form-control" name="Url" id="url" placeholder="Enter URL">
+                  </div>
+                  <div class="form-group">
+                    <label>IsActive</label>
+                    <label class="switch switch-icon switch-success">
+                      <input type="checkbox" class="switch-input" checked="" id="postbackIsActive">
+                      <span class="switch-label" data-on="" data-off=""></span>
+                      <span class="switch-handle"></span>
+                    </label>
+                  </div>
+                  <button type="button" class="btn btn-danger float-right deletePostback" style="margin-left:5px !important; cursor: pointer;" disabled>Delete</button>
+                  <button type="button" class="btn btn-primary  float-right update" style="cursor: pointer;">Update</button>
+                </div>
+              </div>
+            </div>
+            
+
+          </div>
+          
+        </div>
+      </div>
+      <!--/.col-->
+
+    </div>
+    <!--/.row-->
+
+  </div>
+ 
+
+</div>
+
+<script>
+  $(document).ready(function () {
+
+    $('body').on('click', '.update', function () {
+      var parent = $(this).closest('.postback_item');
+      var postbackId = parent.attr('id');
+      var postbackType = parent.find('#postbackType').val();
+      var url = parent.find('#url').val();
+      var isActive = parent.find('#postbackIsActive').is(':checked') == true ? "true" : "false";
+      var affiliateID = $('#affiliateID').attr('affiliateID'); //$('#postbacks').attr('affiliateID');
+      if (url == "")
+        _modal.ToastWarning("You must enter URL!");
+      else {
+        _modal.Primary('Update Postback', 'Are you sure want to update postback?', function () {
+          _system.call('/AdminAffiliateApi/AddPostback',
+            { AffiliateID : affiliateID, PostbackID : postbackId, PostbackTypeID: postbackType, Url: url, IsActive: isActive },
+            function (response) {
+              if (!response.status)
+                _modal.ToastWarning(response.message);
+              else {
+                _modal.Toast(response.message);
+                parent.attr('id', response.data.id);
+                parent.removeClass('card-accent-primary');
+                parent.addClass('card-outline-success');
+                parent.find('.btn-danger').prop('disabled', false);
+              }
+            });
+        }, 'Update', 'Cancel');
+      }
+     
+    });
+   
+    $('#addPostback').click(function () {
+      $('#postbacks').prepend($('.template').html());
+    });
+
+    $('body').on('click', '.deletePostback', function () {
+      var parent = $(this).closest('.postback_item');
+      var postbackId = parent.attr('id');
+
+      _modal.Primary('Delete postback', 'Are you sure want to delete postback?', function () {
+        _system.call("/AdminAffiliateApi/DeletePostback",
+        {
+          PostbackID: postbackId
+        },
+        function (response) {
+
+          if (!response.status)
+            _modal.ToastWarning(response.message);
+          else {
+            _modal.Toast(response.message);
+            parent.remove();
+          }
+        });
+      }, 'Delete', 'Cancel')
+    });
+   
+
+    $('#update').click(function () {
+      var affiliateID = $('#affiliateID').attr('affiliateID');
+      var type = $('#affiliateType').val();
+      var name = $('#name').val();
+      var desc = $('#description').val();
+      var subIDName = $('#subIDName').val();
+      var contact = $('#contact').val();
+      var web = $('#webSite').val();
+      var isActive = $('#isChecked').is(':checked') == true ? "true" : "false";
+      if(name == "" || contact == "" || web == "" )
+        _modal.ToastWarning("Please insert all reqired fileds!");
+      else{
+        _modal.Primary('Update Affiliate', 'Are you sure want to update affiliate?', function () {
+          _system.call("/AdminAffiliateApi/EditAffiliate",
+          {
+            AffiliateID : affiliateID ,AffiliateTypeID: type, Name: name, Description: desc, subIDName: subIDName, Contact: contact, Web: web, IsActive: isActive
+          },
+          function (response) {
+
+            if (!response.status)
+              _modal.ToastWarning(response.message);
+            else{
+              _modal.Toast(response.message);
+              $('#addPostback').prop('disabled', false);
+              $('#affiliateID').attr('affiliateID', response.data.id);
+              
+            }
+          });
+        }, 'Update', 'Cancel');
+      }
+    });
+
+    $('body').on('click', '#postbacks .card-header', function () {
+      $(this).next('.card-block').toggle();
+    });
+  });
+</script>
+

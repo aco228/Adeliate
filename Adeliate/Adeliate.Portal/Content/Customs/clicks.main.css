@@ -1,0 +1,37 @@
+﻿#clickDataHolder {
+  font-size: 12px !important;
+}
+#clickData {}
+#filterBtnOpener{ cursor:hand; cursor:pointer;}
+.filterOpenerBody_closed{ display:none; }
+
+#clickDataTable {
+  background-color: #eaeaea;
+  width: 100%;
+  text-align: center;
+}
+
+
+#clickDataTable tr:hover{ background-color:yellow: }
+#clickDataTable tr:nth-child(odd){background-color: #f5f5f5;}
+#trHeader{ font-weight:bold; background-color:white!important; }
+
+.tableCountry{
+  width:15px; height:15px;
+  background-image:url(../../Images/_Flags/me.png);
+  background-position:center; background-size:contain;
+  background-repeat:no-repeat;
+}
+
+.trClick:hover{ opacity:1;}
+.trClick{ cursor:hand; cursor:pointer; opacity:.9; }
+.trTransaction{ background-color:#daffda!important; }
+.tdCountry { width: 30px; }
+.tdClickID { width: 150px; }
+.tdSubID {}
+.tdOfferName {}
+.tdIP {}
+.tdPlatform {}
+.tdBrowser {}
+.tdTransaction { width: 200px; }
+.tdVisit { width: 200px;}

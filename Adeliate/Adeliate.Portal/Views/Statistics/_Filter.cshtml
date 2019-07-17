@@ -1,0 +1,85 @@
+﻿@model Adeliate.Portal.Models.Statistics.StatisticsFilterModel
+
+<div class="row filter">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label>Date From</label>
+        <input type="text" class="form-control" id="dateFrom" name="name" value="" />
+      </div>
+      <div class="col-md-6 form-group">
+        <label>Date To</label>
+        <input type="text" class="form-control" id="dateTo" name="name" value="" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <label>Country</label>
+          <select id="_country" class="form-control select2-multiple" multiple="">
+            @foreach (var country in Model.Countries)
+            {
+              <option value="@country.ID">@country.GlobalName</option>
+            }
+          </select>
+        </fieldset>
+      </div>
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <label>Carrier</label>
+          <select id="_mobileOperator" class="form-control select2-multiple" multiple="">
+            @foreach (var mobileOperator in Model.MobileOperators)
+            {
+              <option value="@mobileOperator.ID">@mobileOperator.Name</option>
+            }
+          </select>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <label>Browsers</label>
+          <select id="_browser" class="form-control select2-multiple" multiple="">
+            @foreach (var item in Model.DynamicBrowsers)
+            {
+              <option value="@item.ID">@item.Name</option>
+            }
+          </select>
+        </fieldset>
+      </div>
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <label>Platforms</label>
+          <select id="_platform" class="form-control select2-multiple" multiple="">
+            @foreach (var item in Model.DynamicPlatforms)
+            {
+              <option value="@item.ID">@item.Name</option>
+            }
+          </select>
+        </fieldset>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="_groupBy">GroupBy</label>
+          <select id="_groupBy" class="form-control">
+            <option value="1" selected>Offer</option>
+            <option value="2" >Country</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <br />
+          <input type="button" class="btn btn-success ladda-button btnFilter" id="_buttonSearch" name="name" value="Search" style="margin-top:7px; width:100%; cursor:pointer" />
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+

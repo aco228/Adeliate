@@ -1,0 +1,84 @@
+﻿@model Adeliate.Portal.Models.Statistics.StatisticsLoadModel
+
+<table id="datatable" class="table table-striped" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th id="_groupByHeader">Group By</th>
+      <th>Clicks</th>
+      <th>Conversions</th>
+      <th>CR</th>
+      <th>Payout</th>
+    </tr>
+  </thead>
+  <tbody>
+    @{ 
+      int rows = 0;
+
+      int click;
+      int clickCount = 0;
+
+      int cr;
+      int crCount = 0;
+
+      int conversion;
+      int conversionCount = 0;
+
+      double payout;
+      double payoutCount = 0;
+    }
+    @foreach (var item in Model.Rows)
+    {
+      rows++;
+      if (!Int32.TryParse(item.Clicks, out click))
+      {
+        click = 0;
+      }
+      clickCount += click;
+
+      if(!Int32.TryParse(item.CR.Replace(@"%",string.Empty),out cr))
+      {
+        cr = 0;
+      }
+      crCount += cr;
+
+      if (!Int32.TryParse(item.Conversions, out conversion))
+      {
+        conversion = 0;
+      }
+      conversionCount += conversion;
+
+      if (!Double.TryParse(item.Payout.Replace(@"€", string.Empty), out payout))
+      {
+        payout = 0;
+      }
+      payoutCount += payout;
+
+      <tr>
+        <td>@item.GroupBy</td>
+        <td>@item.Clicks</td>
+        <td>@item.Conversions</td>
+        <td>@item.CR</td>
+        <td>@item.Payout</td>
+      </tr>
+    }
+  </tbody>
+  @if (rows != 0)
+  {
+    double CR = (double)crCount / (double)rows;
+    <tfoot>
+      <tr>
+        <th id="footerGroupBy">Group By</th>
+        <th>Clicks @clickCount</th>
+        <th>Conversions @conversionCount</th>
+        <th>CR @CR%</th>
+        <th>Payout @payoutCount€</th>
+      </tr>
+    </tfoot>
+  }
+  
+</table>
+
+
+
+
+

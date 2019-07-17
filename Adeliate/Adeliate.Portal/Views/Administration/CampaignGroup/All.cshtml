@@ -1,0 +1,134 @@
+﻿@model Adeliate.Portal.Models.Administration.EditCampaignGroupModel 
+
+@{
+  ViewBag.Title = "EditCampaignGroup";
+  Layout = "~/Views/_Shared/Layouts/_Main.cshtml";
+ }
+<link href="~/Content/Administration/css/style.css" rel="stylesheet" />
+<style>
+  .campaignGroupInfo{
+    top:10px;
+    width:200px;
+  }
+  .sub-group{
+    margin-top:0 !important;
+    margin-bottom: 0 !important;
+  }
+</style>
+
+<ol class="breadcrumb mb-0">
+  <li class="breadcrumb-item">Home</li>
+  <li class="breadcrumb-item">
+    <a href="#">Admin</a>
+  </li>
+  <li class="breadcrumb-item active">Dashboard</li>
+</ol>
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <strong></strong>
+
+          </div>
+          <div class="card-block">
+            <div class="list-group">
+              @foreach (var item in Model.CampaignGroups)
+              {
+                <div class="list-group-item group campaignGroup" groupID="@item.ID">
+                  <div class="front"></div>
+                  @item.Name
+                  <div class="campaignGroupInfo">
+                    <button class="btn btn-success btnEditCampaign" groupID="@item.ID"  style="cursor:pointer;">Edit Campaign Group</button>
+                  </div>
+                </div>
+                <div class="groupAppend" id="groupAppend_@item.ID" dataLoaded="false"></div>
+
+              }
+            </div>
+          </div>
+         
+        </div>
+
+      </div>
+    </div>
+      
+
+  </div>
+
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('body').on('click', '.btnEditCampaign', function () {
+      var id = $(this).attr('groupID');
+      window.location = "/adminCampaignGroupsEdit?id=" + id;
+    });
+
+    $('body').on('click', '.group', function () {
+      var groupID = $(this).attr('groupID');
+      var parent = $(this);
+      
+      var groupApend = $('#groupAppend_' + groupID);
+      if (groupApend.attr('dataLoaded') == 'true') {
+        groupApend.toggle();
+      }
+      else {
+        
+        _system.call(
+          "/AdminCampaignApi/GetCampaignGroup",
+          { id: groupID },
+          function (response) {
+            if (!response) {
+              
+              groupApend.attr('dataLoaded', 'true');
+              groupApend.attr('display', 'none');
+
+            }
+            else {
+              
+              groupApend.html(response);
+              groupApend.attr('dataLoaded', 'true');
+              groupApend.attr('display', 'block');
+            }
+
+          }
+      );
+      }
+    });
+
+    $('body').on('click', '.sub-group_item', function () {
+      var groupID = $(this).attr('groupID');
+      var parent = $(this);
+      
+      var groupApend = $('#subGroupAppend_' + parent.attr('groupID'));
+      if (groupApend.attr('dataLoaded') === 'true') {
+        groupApend.toggle();
+      }
+      else {
+        
+        _system.call(
+        "/AdminCampaignApi/GetCampaignGroup",
+        { id: groupID },
+        function (response) {
+          if (!response) {
+            
+            groupApend.attr('dataLoaded', 'true');
+            groupApend.attr('display', 'none');
+
+          }
+          else {
+            
+            groupApend.html(response);
+            groupApend.attr('dataLoaded', 'true');
+          }
+
+        }
+        );
+      }
+
+    });
+  });
+</script>
+

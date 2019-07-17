@@ -1,0 +1,86 @@
+﻿@model Adeliate.Portal.Models.Offers.OffersModel
+
+<div class="row filter">
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="_keyword">Keyword</label>
+          <input type="text" class="form-control" id="_keyword" placeholder="Keyword" value="" />
+        </div>
+      </div>
+      <div class="col-md-8">
+        <fieldset class="form-group">
+          <label>Country</label>
+          <select id="_country" class="form-control select2-multiple" multiple="">
+            @foreach (var country in Model.Countries)
+            {
+              <option value="@country.ID">@country.GlobalName</option>
+            }
+          </select>
+        </fieldset>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <fieldset class="form-group">
+          <label>Carrier</label>
+          <select id="_mobileOperator" class="form-control select2-multiple" multiple="">
+            @foreach (var mobileOperator in Model.MobileOperators)
+            {
+              <option value="@mobileOperator.ID">@mobileOperator.Name</option>
+            }
+          </select>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="row">
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <label>Devices</label>
+          <select id="_device" class="form-control select2-multiple" multiple="">
+            @foreach (Adlite.Data.CampaignDevice device in Enum.GetValues(typeof(Adlite.Data.CampaignDevice)))
+            {
+              <option value="@Html.Raw(((int)device).ToString())">@device.ToString()</option>
+            }
+          </select>
+        </fieldset>
+      </div>
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <label>Flows</label>
+          <select id="_flow" class="form-control select2-multiple" multiple="">
+            @foreach (Adlite.Data.CampaignFlow flow in Enum.GetValues(typeof(Adlite.Data.CampaignFlow)))
+            {
+              <option value="@Html.Raw(((int)flow).ToString())">@flow.ToString()</option>
+            }
+          </select>
+        </fieldset>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <fieldset class="form-group">
+          <label>Content</label>
+          <select id="_content" class="form-control select2-multiple" multiple="">
+            @foreach (Adlite.Data.CampaignContentType content in Enum.GetValues(typeof(Adlite.Data.CampaignContentType)))
+            {
+              <option value="@Html.Raw(((int)content).ToString())">@content.ToString()</option>
+            }
+          </select>
+        </fieldset>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <br />
+          <input type="button" class="btn btn-success ladda-button btnFilter" id="_button" name="name" value="Search" style="margin-top:7px; width:100%; cursor:pointer" />
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+

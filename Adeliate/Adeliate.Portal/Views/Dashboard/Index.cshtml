@@ -1,0 +1,16 @@
+﻿@model Adeliate.Portal.Models.Dashboard.DashboardModel
+<!-- Breadcrumb -->
+<ol class="breadcrumb mb-0">
+  <li class="breadcrumb-item">Home</li>
+  <li class="breadcrumb-item active">Dashboard</li>
+</ol>
+
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    
+    @Html.Partial("~/Views/Dashboard/_Partial/OverallStats.cshtml", Model)
+    @Html.Partial("~/Views/Dashboard/_Partial/Traffic.cshtml", Model)
+    @Html.Partial("~/Views/Dashboard/_Partial/Offers.cshtml", Model)
+    
+  </div>
+</div>

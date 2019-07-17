@@ -1,0 +1,101 @@
+﻿@model Adeliate.Portal.Models.Statistics.StatisticsModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Shared/Layouts/_Main.cshtml";
+}
+<link href="~/Content/Statistic/style.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
+<script src="https://unpkg.com/flatpickr"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/Scripts/template/libs/select2.min.js"></script>
+<style>
+
+</style>
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    <div class="col-md-12 _filter">
+      <div id="mainHolder">
+        <div id="campaignID" campaignID="@Model.CampaignID"></div>
+        <div id="affiliateID" affiliateID="@Model.AffiliateID"></div>
+        @Html.Partial("~/Views/Statistics/_Filter.cshtml", Model.FilterModel)
+      </div>
+
+      <div class="row" id="appendTable">
+        
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+  select2GetData = function (id) {
+    var data = $('#' + id).select2('data');
+    var result = '';
+    for (var i = 0; i < data.length; i++)
+      result += (result != '' ? ',' : '') + data[i].id;
+    return result;
+  }
+
+  $('#_country,#_mobileOperator,#_platform, #_browser').select2();
+  $(document).ready(function () {
+   
+    $('#dateFrom').flatpickr({
+      enableTime: true,
+      time_24hr: true
+    });
+
+    $('#dateTo').flatpickr({
+      enableTime: true,
+      time_24hr: true
+    });
+
+    
+    onLoad();
+    $('body').on('click', '#_buttonSearch', function () {
+      onLoad();
+    });
+
+  });
+
+  function onLoad() {
+    var groupBy = $('#_groupBy').val();
+    var countries = select2GetData('_country');
+    var mobileOperators = select2GetData('_mobileOperator');
+    var browsers = select2GetData('_browser');
+    var platforms = select2GetData('_platform');
+    var affiliateID = $('#affiliateID').attr('affiliateID');
+    var dateFrom = $('#dateFrom').val();
+    var dateTo = $('#dateTo').val();
+    var campaignID = $('#campaignID').attr('campaignID');
+
+    _system.call('/StatisticsApi/Load',
+      {
+        campaignID: campaignID,
+        groupBy: groupBy,
+        dateFrom: dateFrom,
+        dateTo: dateTo,
+        countries: countries,
+        mobileOperators: mobileOperators,
+        browsers: browsers,
+        platforms: platforms,
+        affiliateID: affiliateID
+      },
+      function (response) {
+        $('#appendTable').html(response);
+        $('#datatable').DataTable({
+          responsive: true
+        });
+        $('#_groupByHeader').html($('#_groupBy option:selected').text());
+        $('#footerGroupBy').html("GroupBy " + $('#_groupBy option:selected').text());
+      }
+      );
+  }
+
+
+</script>
+

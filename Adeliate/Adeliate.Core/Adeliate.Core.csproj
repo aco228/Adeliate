@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EFD85DDD-2455-4EE7-9200-83F9FC6A41E0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Adeliate.Core</RootNamespace>
+    <AssemblyName>Adeliate.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\_thirdPartyLibs\log4net-1.2.11\bin\net\4.0\release\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\Affiliate.cs" />
+    <Compile Include="Data\Affiliate.model.cs" />
+    <Compile Include="Data\AffiliateImageMap.cs" />
+    <Compile Include="Data\AffiliateImageMap.model.cs" />
+    <Compile Include="Data\AffiliateNotification.cs" />
+    <Compile Include="Data\AffiliateNotification.model.cs" />
+    <Compile Include="Data\AffiliateType.cs" />
+    <Compile Include="Data\AffiliateType.model.cs" />
+    <Compile Include="Data\Campaign.cs" />
+    <Compile Include="Data\Campaign.model.cs" />
+    <Compile Include="Data\CampaignContentType.cs" />
+    <Compile Include="Data\CampaignDevice.cs" />
+    <Compile Include="Data\CampaignDeviceMap.cs" />
+    <Compile Include="Data\CampaignDeviceMap.model.cs" />
+    <Compile Include="Data\CampaignFlow.cs" />
+    <Compile Include="Data\CampaignFlowMap.cs" />
+    <Compile Include="Data\CampaignFlowMap.model.cs" />
+    <Compile Include="Data\CampaignGroup.cs" />
+    <Compile Include="Data\CampaignGroup.model.cs" />
+    <Compile Include="Data\CampaignImageMap.cs" />
+    <Compile Include="Data\CampaignImageMap.model.cs" />
+    <Compile Include="Data\CampaignMobileOperatorMap.cs" />
+    <Compile Include="Data\CampaignMobileOperatorMap.model.cs" />
+    <Compile Include="Data\Click.cs" />
+    <Compile Include="Data\Click.model.cs" />
+    <Compile Include="Data\ClickInformation.cs" />
+    <Compile Include="Data\ClickInformation.model.cs" />
+    <Compile Include="Data\Country.cs" />
+    <Compile Include="Data\Country.model.cs" />
+    <Compile Include="Data\Currency.cs" />
+    <Compile Include="Data\Currency.model.cs" />
+    <Compile Include="Data\Customer.cs" />
+    <Compile Include="Data\Customer.model.cs" />
+    <Compile Include="Data\CustomerImageMap.cs" />
+    <Compile Include="Data\CustomerImageMap.model.cs" />
+    <Compile Include="Data\CustomerSession.cs" />
+    <Compile Include="Data\CustomerSession.model.cs" />
+    <Compile Include="Data\CustomerStatus.cs" />
+    <Compile Include="Data\CustomerType.cs" />
+    <Compile Include="Data\CustomerType.model.cs" />
+    <Compile Include="Data\DynamicBrowser.cs" />
+    <Compile Include="Data\DynamicBrowser.model.cs" />
+    <Compile Include="Data\DynamicPlatform.cs" />
+    <Compile Include="Data\DynamicPlatform.model.cs" />
+    <Compile Include="Data\Enumerations.cs" />
+    <Compile Include="Data\Image.cs" />
+    <Compile Include="Data\Image.model.cs" />
+    <Compile Include="Data\Language.cs" />
+    <Compile Include="Data\Language.model.cs" />
+    <Compile Include="Data\MobileOperator.cs" />
+    <Compile Include="Data\MobileOperator.model.cs" />
+    <Compile Include="Data\MobileOperatorCode.cs" />
+    <Compile Include="Data\MobileOperatorCode.model.cs" />
+    <Compile Include="Data\Offer.cs" />
+    <Compile Include="Data\Offer.model.cs" />
+    <Compile Include="Data\OfferCapMap.cs" />
+    <Compile Include="Data\OfferCapMap.model.cs" />
+    <Compile Include="Data\Postback.cs" />
+    <Compile Include="Data\Postback.model.cs" />
+    <Compile Include="Data\PostbackData.cs" />
+    <Compile Include="Data\PostbackData.model.cs" />
+    <Compile Include="Data\PostbackRequest.cs" />
+    <Compile Include="Data\PostbackRequest.model.cs" />
+    <Compile Include="Data\PostbackRequestType.cs" />
+    <Compile Include="Data\PostbackType.cs" />
+    <Compile Include="Data\PostbackType.model.cs" />
+    <Compile Include="Data\Price.cs" />
+    <Compile Include="Data\Price.model.cs" />
+    <Compile Include="Data\StatInfo.cs" />
+    <Compile Include="Data\StatInfo.model.cs" />
+    <Compile Include="Data\StatType.cs" />
+    <Compile Include="Data\Transaction.cs" />
+    <Compile Include="Data\Transaction.model.cs" />
+    <Compile Include="DB.Core\AdliteObject.cs" />
+    <Compile Include="DB.Core\IAdliteObject.cs" />
+    <Compile Include="Implementation\Affiliate\AdliteAffiliate.cs" />
+    <Compile Include="Implementation\Affiliate\Outputs\BeforeClickOutput.cs" />
+    <Compile Include="Implementation\Affiliate\Outputs\OnClickOutput.cs" />
+    <Compile Include="Implementation\Affiliate\Types\DefaultAffiliate.cs" />
+    <Compile Include="Implementation\Customer\AdliteCustomer.cs" />
+    <Compile Include="Implementation\Customer\CustomerWeight.cs" />
+    <Compile Include="Implementation\Customer\Types\AdministratorAdliteCustomer.cs" />
+    <Compile Include="Implementation\Customer\Types\DefaultAdliteCustomer.cs" />
+    <Compile Include="Implementation\AdliteSession.cs" />
+    <Compile Include="Implementation\Customer\Types\MerchantAdliteCustomer.cs" />
+    <Compile Include="Implementation\Customer\Types\VisitorAdliteCustomer.cs" />
+    <Compile Include="Implementation\Offer\AdliteClick.cs" />
+    <Compile Include="Implementation\Offer\AdliteGroup.cs" />
+    <Compile Include="Implementation\Offer\AdliteOffer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Senti\trunk\Senti.Core\Senti.Core.csproj">
+      <Project>{fc2aa55a-f0ca-423a-8f45-2f21fc6982ce}</Project>
+      <Name>Senti.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Senti\trunk\Senti.Data\Senti.Data.csproj">
+      <Project>{FFA64EB3-3D17-4DC1-8B8F-1E4B884AC7E5}</Project>
+      <Name>Senti.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Base\" />
+    <Folder Include="Implementation\Offer\Types\Click\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

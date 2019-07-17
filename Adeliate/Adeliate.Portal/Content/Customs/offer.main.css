@@ -1,0 +1,227 @@
+﻿#mainHolder{}
+#filterHolder {
+  padding: 5px;
+}
+.filterGroup {
+  float: left;
+  width: 200px;
+  margin: 3px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 5px;
+  border-bottom: 1px solid #9e9e9e;
+  border-right:1px solid #9e9e9e;
+}
+.filterGroupTitle{ font-weight:bold; }
+.filterGroup select {
+  width: 100%;
+  font: inherit;
+  padding: 0px 10px;
+  height: 29px;
+  border: none;
+  text-align:center;
+  background-color: aliceblue;
+}
+.filterGroup input[type=text] {
+  width: 95%;
+  font: inherit;
+  border: none;
+  padding: 10px;
+  background-color: #efefef;
+  height: 29px;
+}
+.filterGroup input[type=button]{width:95%; font:inherit;}
+
+
+#offersHolder{ position:relative;}
+#offersLoader{ position:absolute; z-index:5000; top:0px; left:250px; display:none; }
+
+.offerWrapper{
+    float:left; width:45%;
+    min-width: 550px;
+    margin:5px;
+    cursor:hand; cursor:pointer;
+}
+.offerBody{
+    position:relative;
+    background-color:white;
+    box-shadow:0px 0px 10px rgba(0,0,0,.1);
+    height: 160px;
+    padding:5px;
+}
+.offerOverlay{
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  z-index:200;
+  pointer-events:none;
+  background: linear-gradient(to right, rgba(0, 115, 40, 0.1), rgba(232, 41, 41, 0.02));
+}
+.offerImage{
+    position:absolute;
+    top:5px; left:5px;
+    width:150px; height:150px;
+    background-color:black;
+    background-image:url('https://s-media-cache-ak0.pinimg.com/originals/2b/14/88/2b1488e49f69ea07b3a12e8bfdff98d9.jpg');
+    background-position:center;
+    background-size:cover;
+}
+.offerInformations{
+    position:absolute;
+    left: 160px;
+
+}
+.offerTitle{
+    font-weight:bold;  margin-left: 25px;
+    border-bottom:1px solid black;
+}
+.offerCountry{
+  width: 20px;
+  height: 20px;
+  display: block;
+  background-image: url(../../Images/_Flags/ae.png);
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+  position: absolute;
+  z-index: 100;
+  top: 0px;
+  left: 0px;
+}
+.offerID{ font-size:10px; }
+.offerDetailedInformations{
+  position:absolute; width: 500px;font-size:12px;
+}
+.offerDInfo:hover{ height:auto; }
+.offerDInfo{
+    float:left;width:100px;text-align:center;background-color: #f1f1f1;margin:3px;padding: 1px;
+    height: 40px; overflow:hidden;
+}
+.offerDInfoTitle{}
+.offerDInfoValue{ font-weight: bold;}
+.offerDetails{  font-size: 13px; line-height: 13px; margin-top: 3px; margin-top:45px; }
+.offerActions{
+    position:absolute;
+    top:5px; right:5px;
+    display:none;
+}
+.offerButton{
+    cursor:hand; cursor:pointer;
+    background-color:red;
+}
+.filter{
+  background: #fff;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  border-radius: 5px;
+}
+
+.btnFilter{    
+  margin-top: 7px;
+  width: 100%;
+  cursor: pointer;
+}
+#offersHolder{
+  margin-top:20px !important;
+}
+.offer {
+  background: #fff;
+  border-top: 2px solid #4dbd74;
+  margin-right: 18px;
+  padding-bottom: 30px;
+  padding: 17px;
+  padding-top: 10px;
+  min-width: 306px;
+  margin-bottom: 25px;
+  border-radius:5px;
+  height:567px;
+}
+.offer-img{
+  height:242px;
+  margin-top:18px;
+}
+.offer-img img{
+  width:100%;
+  height:100%;
+}
+.offer-title{
+  color: #4dbd74;
+  margin-top:10px;
+}
+
+.offer-title span{
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 5px;
+}
+.offer-title img{
+  margin-top: -6px;
+  height: 20px;
+  width: 37px;
+}
+.offer-devices img{
+  margin-right:5px;
+  margin-top: 8px;
+}
+.offer-price span{
+  color: #4dbd74;
+  margin-top:8px;
+  font-weight:500;
+}
+.offer-info {
+  margin-bottom: 84px;
+}
+#offerDataHolder{
+  margin-right:-36px;
+}
+.offer-flows{
+  max-width:50%;
+}
+.offer-flows span{
+  color: #4dbd74;
+}
+.offer-operators{
+  max-width:50%;
+}
+
+.offer-operators span{
+  color: #4dbd74;
+}
+
+.offer-more {
+  width: 90%;
+  bottom: 12px;
+  position: absolute;
+  left: 16px;
+}
+
+.btnMore{
+  padding-left:26px;
+  padding-right:26px;
+}
+
+@media  (max-width: 500px) {
+  .container-fluid{
+    padding-left:10px !important;
+    padding-right:10px !important;
+  }
+  .offer{
+    margin-right:0px;
+  }
+  #offerDataHolder{
+    margin-right: -15px;
+  }
+  .sidebar{
+    padding-left:0px;
+  }
+}
+
+.badge18 {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  right: 17px;
+  top: 34px;
+}

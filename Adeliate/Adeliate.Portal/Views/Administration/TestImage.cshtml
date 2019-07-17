@@ -1,0 +1,32 @@
+﻿@model Adeliate.Portal.Models.Administration.EditCampaignModel 
+@{
+    ViewBag.Title = "New Campaign";
+    Layout = "~/Views/_Shared/Layouts/_Main.cshtml";
+}
+
+<div>
+  <form action="/AdminCampaign/AddImage" method="post" enctype="multipart/form-data">
+    <input id="campaignID" type="text" name="Whom" value="" placeholder="camp||cust" />
+    <input type="text" name="ID" value="" placeholder="ID of object" />
+    <input type="file" name="file" value="" />
+    <input id="submit" type="submit" name="name" value="Confirm" />
+  </form>
+</div>
+
+<div id="response"></div>
+
+<script>
+  $(document).ready(function () {
+    $('#submit').click(function () {
+      
+      //var id = $('#campaignID').val();
+      //_system.call(
+      //  "/AdminCampaign/AddImage",
+      //  {ID:id},
+      //  function (response) {
+      //    $('#response').html(response);
+      //  }
+      //  );
+    });
+  });
+</script>

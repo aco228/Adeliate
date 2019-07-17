@@ -1,0 +1,54 @@
+﻿@model Adeliate.Portal.Models.Offers.OffersModel
+<link href="~/Content/Customs/offer.main.css" rel="stylesheet" />
+<script src="~/Scripts/template/libs/select2.min.js"></script>
+<script src="~/Scripts/managers/OffersManager.js"></script>
+<script>
+  var _manager = null;
+  $(document).ready(function () {
+    _manager = new OffersManager();
+    _manager.offersCount = @AdliteContext.Current.AdliteCache.OfferCount;
+  });
+</script>
+
+<div class="container-fluid">
+  <div class="animated fadeIn">
+    <div class="col-md-12" style="margin-top:12px;">
+      <div id="mainHolder">
+        @Html.Partial("~/Views/Offers/_Filter.cshtml", Model)
+
+        <div id="offersHolder" >
+          <div id="offersLoader">
+            <div class="sk-rotating-plane"></div>
+          </div>
+          <div id="offerDataHolder" class="row"></div>
+          <div style="clear:both"></div>
+          <div style="padding:40px;">
+
+            <button class="btn btn-success btn-ladda ladda-button" data-style="expand-left" id="_buttonAppend">
+              <span class="ladda-label">Load more</span><span class="ladda-spinner"></span>
+              <div class="ladda-progress" style="width: 0px;"></div>
+            </button>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  $('#_country,#_mobileOperator,#_device,#_flow, #_content').select2();
+  $(document).ready(function(){
+    $('body').on('click','.btnMore',function(){
+      var id = $(this).closest('.__offersLoadOffer').attr('offerid');
+      var win = window.open('/offers/info?id='+id, '_blank');
+    });
+
+    $('img[data-toggle="tooltip"]').tooltip({
+      animated: 'fade',
+      placement: 'bottom'
+    });
+  });
+</script>
